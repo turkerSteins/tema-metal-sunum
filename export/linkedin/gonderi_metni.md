@@ -4,8 +4,8 @@ Dosya: `export/linkedin/Tema_Metal_LinkedIn_Carousel.pdf` (LinkedIn'de **"Belge 
 
 ### 💬 İlk Yoruma Eklenecek Canlı Demo Linki (Erişimi korumak için gönderi metni yerine ilk yoruma koyun)
 > 🖥️ **Sunumun canlı ve interaktif versiyonunu (ve hareketli izometrik fabrika simülasyonunu) buradan inceleyebilirsiniz:**
-> 🔗 https://turkersteins.github.io/tema-metal-sunum/
-> 🏭 Tam ekran canlı izometrik üretim akışı: https://turkersteins.github.io/tema-metal-sunum/izometrik_akis.html
+> 🔗 https://mcsotomasyon.github.io/tema-metal-sunum/
+> 🏭 Tam ekran canlı izometrik üretim akışı: https://mcsotomasyon.github.io/tema-metal-sunum/izometrik_akis.html
 
 ---
 
