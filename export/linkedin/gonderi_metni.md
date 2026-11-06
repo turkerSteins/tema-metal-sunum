@@ -2,6 +2,11 @@
 
 Dosya: `export/linkedin/Tema_Metal_LinkedIn_Carousel.pdf` (LinkedIn'de **"Belge ekle"** ile yükleyin; belge başlığı olarak **`Tema Metal — Uçtan Uca Dijital Fabrika (Vaka Çalışması)`** yazabilirsiniz).
 
+### 💬 İlk Yoruma Eklenecek Canlı Demo Linki (Erişimi korumak için gönderi metni yerine ilk yoruma koyun)
+> 🖥️ **Sunumun canlı ve interaktif versiyonunu (ve hareketli izometrik fabrika simülasyonunu) buradan inceleyebilirsiniz:**
+> 🔗 https://turkersteins.github.io/tema-metal-sunum/
+> 🏭 Tam ekran canlı izometrik üretim akışı: https://turkersteins.github.io/tema-metal-sunum/izometrik_akis.html
+
 ---
 
 ## Seçenek 1 — Hikâye Odaklı (Önerilen)
