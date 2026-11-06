@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050b16">
+  <meta name="description" content="Tema Metal uçtan uca üretim akışı: ERP iş emri, dilme, 4 kollu üretim (Pres, Kesim, Sarım, Unicore), paletleme ve tıra sevkiyat.">
+  <title>Tema Metal – Uçtan Uca Üretim &amp; Sevkiyat Akışı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Rajdhani:wght@600;700;800&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%; height: 100%;
+      overflow: hidden !important;
+      background: #050b16;
+      color: #fff;
+      font-family: 'Inter', system-ui, sans-serif;
+      user-select: none;
+      display: flex; flex-direction: column;
+    }
+
+    /* ── Embedded (inside slide) ── */
+    body.is-embedded { background: transparent !important; }
+    body.is-embedded .topbar { display: none !important; }
+    body.is-embedded .stage { background: transparent !important; }
+    body.is-video .topbar,
+    body.is-video .stepper,
+    body.is-video .narr,
+    body.is-video .dock { display: none !important; }
+
+    /* ── Top bar ── */
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 10px 24px; flex-shrink: 0; z-index: 100;
+      background: rgba(6, 14, 27, .98);
+      border-bottom: 1px solid rgba(56, 189, 248, .25);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo {
+      width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+      background: linear-gradient(135deg, #0284c7, #22d3ee); color: #04121f; font-weight: 900; font-size: 20px;
+      box-shadow: 0 0 18px rgba(34, 211, 238, .45);
+    }
+    .brand h1 { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: .04em; }
+    .brand p { font-size: 12px; color: #94a3b8; }
+    .top-actions { display: flex; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px; cursor: pointer; text-decoration: none;
+      padding: 7px 16px; border-radius: 20px; font: 700 12.5px 'Inter', sans-serif;
+      color: #e0f2fe; background: rgba(14, 165, 233, .14); border: 1px solid rgba(56, 189, 248, .45);
+      transition: all .2s;
+    }
+    .btn:hover { background: rgba(14, 165, 233, .3); color: #fff; transform: translateY(-1px); }
+    .btn.active { background: #0284c7; border-color: #22d3ee; }
+
+    /* ── Stepper ── */
+    .stepper {
+      display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;
+      padding: 8px 16px; flex-shrink: 0; z-index: 90;
+      background: rgba(6, 13, 25, .96); border-bottom: 1px solid rgba(56, 189, 248, .18);
+    }
+    .step {
+      display: flex; align-items: center; gap: 8px; cursor: pointer;
+      padding: 6px 14px; border-radius: 22px; font-size: 13px; font-weight: 800; color: #8aa0b6;
+      background: rgba(13, 25, 42, .9); border: 1px solid rgba(56, 189, 248, .25);
+      transition: all .3s;
+    }
+    .step:hover { color: #fff; border-color: #38bdf8; }
+    .step .n {
+      width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center;
+      background: rgba(255, 255, 255, .1); font-size: 11px; font-weight: 900;
+    }
+    .step.done { color: #6ee7b7; border-color: rgba(16, 185, 129, .45); }
+    .step.done .n { background: #10b981; color: #022c22; }
+    .step.active {
+      color: #fff; background: rgba(34, 211, 238, .2); border-color: #22d3ee;
+      box-shadow: 0 0 18px rgba(34, 211, 238, .45); transform: scale(1.04);
+    }
+    .step.active .n { background: #22d3ee; color: #04121f; }
+    .arrow { color: rgba(56, 189, 248, .45); font-size: 12px; }
+
+    /* ── Stage ── */
+    .stage {
+      flex: 1; min-height: 0; position: relative; overflow: hidden; cursor: grab;
+      background: radial-gradient(ellipse at 50% 40%, #0e2038 0%, #060d1a 75%);
+    }
+    .stage:active { cursor: grabbing; }
+    #scene { width: 100%; height: 100%; display: block; }
+
+    /* Narration */
+    .narr {
+      position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 95;
+      display: flex; align-items: center; gap: 14px; pointer-events: none;
+      max-width: min(1400px, calc(100% - 40px));
+      padding: 9px 22px; border-radius: 16px;
+      background: rgba(5, 15, 30, .92); border: 1.5px solid rgba(34, 211, 238, .6);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .6), 0 0 22px rgba(34, 211, 238, .2);
+      backdrop-filter: blur(12px);
+    }
+    .narr .dot { width: 10px; height: 10px; flex-shrink: 0; border-radius: 50%; background: #22d3ee; box-shadow: 0 0 12px #22d3ee; animation: pulse 1.5s infinite; }
+    .narr .t { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 800; letter-spacing: .06em; color: #22d3ee; white-space: nowrap; }
+    .narr .sep { width: 1.5px; height: 22px; background: rgba(255, 255, 255, .2); flex-shrink: 0; }
+    .narr .d { font-size: 14.5px; font-weight: 600; color: #f1f5f9; line-height: 1.35; }
+    @keyframes pulse { 50% { transform: scale(1.35); opacity: .6; } }
+
+    /* Dock */
+    .dock {
+      position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 95;
+      display: flex; align-items: center; gap: 12px; padding: 7px 18px; border-radius: 34px;
+      background: rgba(5, 15, 30, .94); border: 1.5px solid rgba(56, 189, 248, .4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .7);
+    }
+    .dbtn {
+      width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; cursor: pointer;
+      color: #fff; font: 800 13px 'JetBrains Mono', monospace;
+      background: rgba(14, 165, 233, .18); border: 1px solid rgba(56, 189, 248, .45); transition: all .2s;
+    }
+    .dbtn:hover { background: #0284c7; transform: scale(1.08); }
+    #timeline { width: 260px; accent-color: #22d3ee; cursor: pointer; }
+    #time { font: 800 12px 'JetBrains Mono', monospace; color: #94a3b8; min-width: 92px; }
+    .cam {
+      display: flex; align-items: center; gap: 7px; cursor: pointer; padding: 6px 12px; border-radius: 14px;
+      font-size: 12px; font-weight: 800; color: #38bdf8;
+      background: rgba(34, 211, 238, .12); border: 1px solid rgba(34, 211, 238, .4);
+    }
+    .cam i { width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981; }
+    .cam.manual i { background: #f59e0b; box-shadow: 0 0 8px #f59e0b; }
+
+    /* SVG */
+    svg text { font-family: 'Inter', system-ui, sans-serif; }
+    .f-title { font-family: 'Inter', system-ui, sans-serif; font-weight: 800; letter-spacing: .02em; }
+    .f-mono { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+    .zone { transition: opacity .7s ease; }
+    .flowline { stroke-dasharray: 10 8; animation: dash 1.2s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset: -36; } }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">⬡</div>
+      <div>
+        <h1>TEMA METAL · UÇTAN UCA ÜRETİM &amp; SEVKİYAT AKIŞI</h1>
+        <p>ERP iş emri ➔ Dilme ➔ 4 ayrı iş emriyle üretim ➔ Paletleme ➔ Tıra yükleme ve sevk</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="btn" id="fsBtn">⛶ Tam Ekran (F10)</button>
+      <button class="btn" id="overviewBtn">🌐 Tüm Fabrika</button>
+      <a class="btn" href="index.html#s2">← Sunuma Dön</a>
+    </div>
+  </header>
+
+  <nav class="stepper" id="stepper"></nav>
+
+  <main class="stage" id="stage">
+    <div class="narr">
+      <span class="dot"></span>
+      <span class="t" id="narrT">ADIM 1 / 5</span>
+      <span class="sep"></span>
+      <span class="d" id="narrD"></span>
+    </div>
+
+    <svg id="scene" viewBox="0 0 1800 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0c1a2e" />
+          <stop offset="1" stop-color="#08111f" />
+        </linearGradient>
+        <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M60 0H0V60" fill="none" stroke="#173049" stroke-width="1" />
+        </pattern>
+        <radialGradient id="spot" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stop-color="#38bdf8" stop-opacity=".22" />
+          <stop offset="1" stop-color="#38bdf8" stop-opacity="0" />
+        </radialGradient>
+        <radialGradient id="headGlow" cx="0%" cy="50%" r="100%">
+          <stop offset="0" stop-color="#fef9c3" stop-opacity=".85" />
+          <stop offset=".4" stop-color="#fde68a" stop-opacity=".35" />
+          <stop offset="1" stop-color="#fde68a" stop-opacity="0" />
+        </radialGradient>
+        <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+          <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".55" />
+        </filter>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="5" result="b" />
+          <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0L10 5L0 10z" fill="context-stroke" />
+        </marker>
+      </defs>
+
+      <!-- Floor -->
+      <rect x="-800" y="-400" width="6400" height="1700" fill="url(#floor)" />
+      <rect x="-800" y="-400" width="6400" height="1700" fill="url(#grid)" opacity=".55" />
+
+      <!-- Zone headers (large section labels on floor) -->
+      <g font-family="Inter, sans-serif" font-weight="900" fill="#1d3a57" font-size="56" letter-spacing="4" opacity=".5">
+        <text x="40" y="880">HAMMADDE</text>
+        <text x="520" y="880">DİLME</text>
+        <text x="1160" y="880">4 KOLLU ÜRETİM</text>
+        <text x="2390" y="880">PALETLEME</text>
+        <text x="2980" y="880">SEVKİYAT</text>
+      </g>
+
+      <g id="layerZones"></g>
+      <g id="layerFlow"></g>
+      <g id="layerMovers"></g>
+    </svg>
+  </main>
+
+  <footer class="dock">
+    <button class="dbtn" id="playBtn" title="Oynat / Duraklat (Boşluk)">⏸</button>
+    <input type="range" id="timeline" min="0" max="1000" value="0">
+    <span id="time">00:00 / 00:28</span>
+    <button class="dbtn" id="speedBtn" title="Hız">1x</button>
+    <div class="cam" id="camBtn"><i></i><span id="camTxt">Kamera: Takip</span></div>
+  </footer>
+
+  <script>
+    (() => {
+      'use strict';
+      if (window.self !== window.top || location.search.includes('embed=1')) document.body.classList.add('is-embedded');
+      if (location.search.includes('video=1')) document.body.classList.add('is-video');
+
+      const A = 'assets/flow/';
+      const NS = 'http://www.w3.org/2000/svg';
+      const STAGE_W = 4600, VW = 1800, VH = 900, TOTAL = 28;
+
+      const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+      const ease = x => { x = clamp(x); return x * x * (3 - 2 * x); };
+      const lerp = (a, b, p) => a + (b - a) * p;
+      const win = (t, a, b) => ease((t - a) / (b - a));
+      const fade = (t, a, b, c, d) => clamp((t - a) / (b - a)) * clamp((d - t) / (d - c));
+      const bez = (p0, p1, p2, t) => [
+        (1 - t) * (1 - t) * p0[0] + 2 * (1 - t) * t * p1[0] + t * t * p2[0],
+        (1 - t) * (1 - t) * p0[1] + 2 * (1 - t) * t * p1[1] + t * t * p2[1]
+      ];
+
+      // ── tiny SVG builder ──
+      function el(tag, attrs = {}, parent, text) {
+        const n = document.createElementNS(NS, tag);
+        for (const k in attrs) n.setAttribute(k, attrs[k]);
+        if (text !== undefined) n.textContent = text;
+        if (parent) parent.appendChild(n);
+        return n;
+      }
+      const img = (p, href, x, y, w, h, extra = {}) => el('image', { href: A + href, x, y, width: w, height: h, preserveAspectRatio: 'xMidYMid meet', ...extra }, p);
+      const txt = (p, x, y, s, fill, str, extra = {}) => el('text', { x, y, 'font-size': s, fill, 'font-weight': 700, ...extra }, p, str);
+      const setT = (n, x, y, s = 1) => n.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${s.toFixed(3)})`);
+      const setO = (n, o) => n.setAttribute('opacity', clamp(o).toFixed(3));
+
+      // Status chip (BEKLİYOR / ÇALIŞIYOR / TAMAMLANDI)
+      function chip(p, x, y, color) {
+        const g = el('g', { transform: `translate(${x} ${y})` }, p);
+        const bg = el('rect', { width: 168, height: 28, rx: 14, fill: '#0b1626', stroke: '#334155', 'stroke-width': 1.5 }, g);
+        const dot = el('circle', { cx: 16, cy: 14, r: 5.5, fill: '#64748b' }, g);
+        const t = txt(g, 30, 19, 13, '#94a3b8', 'BEKLİYOR', { 'font-weight': 800, 'letter-spacing': '.06em' });
+        return {
+          set(state) {
+            if (state === g._s) return; g._s = state;
+            const map = { wait: ['BEKLİYOR', '#64748b', '#334155', '#94a3b8'], run: ['ÇALIŞIYOR', color, color, '#ffffff'], done: ['TAMAMLANDI ✓', '#10b981', '#10b981', '#6ee7b7'] };
+            const [s, dc, bc, tc] = map[state];
+            t.textContent = s; dot.setAttribute('fill', dc); bg.setAttribute('stroke', bc); t.setAttribute('fill', tc);
+            dot.setAttribute('filter', state === 'run' ? 'url(#glow)' : '');
+          }
+        };
+      }
+
+      // Work order card
+      function woCard(p, x, y, w, color, title, wo, sub, label = 'İŞ EMRİ') {
+        const g = el('g', { transform: `translate(${x} ${y})` }, p);
+        el('rect', { width: w, height: 128, rx: 16, fill: 'rgba(6,16,31,.96)', stroke: color, 'stroke-width': 2.5, filter: 'url(#shadow)' }, g);
+        el('rect', { width: 9, height: 128, rx: 4.5, fill: color }, g);
+        txt(g, 26, 32, 19, '#ffffff', title, { class: 'f-title' });
+        el('rect', { x: 24, y: 44, width: w - 48, height: 44, rx: 9, fill: 'rgba(255,255,255,.04)', stroke: color, 'stroke-opacity': .6 }, g);
+        txt(g, 38, 71, 12.5, '#94a3b8', label, { 'font-weight': 800, 'letter-spacing': '.08em' });
+        txt(g, 38 + label.length * 9 + 14, 75, 27, color, wo, { class: 'f-mono' });
+        txt(g, 26, 112, 15, '#cbd5e1', sub, { 'font-weight': 600 });
+        return g;
+      }
+
+      const Z = document.getElementById('layerZones');
+      const F = document.getElementById('layerFlow');
+      const M = document.getElementById('layerMovers');
+      const zones = {};
+      const zone = id => (zones[id] = el('g', { class: 'zone' }, Z));
+
+      // ═══════════ ZONE 1: ERP + RAW COIL ═══════════
+      const z1 = zone('z1');
+      {
+        const g = el('g', { transform: 'translate(50 80)' }, z1);
+        el('rect', { width: 390, height: 262, rx: 18, fill: 'rgba(4,20,38,.97)', stroke: '#22d3ee', 'stroke-width': 2.5, filter: 'url(#shadow)' }, g);
+        el('rect', { width: 390, height: 44, rx: 18, fill: 'rgba(34,211,238,.14)' }, g);
+        txt(g, 22, 30, 20, '#fff', '01 · ERP & MES PLANLAMA', { class: 'f-title' });
+        el('circle', { cx: 362, cy: 22, r: 6, fill: '#10b981', filter: 'url(#glow)' }, g);
+        txt(g, 22, 76, 12.5, '#94a3b8', 'ANA İŞ EMRİ', { 'font-weight': 800, 'letter-spacing': '.1em' });
+        txt(g, 22, 116, 38, '#22d3ee', 'WO-DIL-1048', { class: 'f-mono', filter: 'url(#glow)' });
+        const rows = [['Hammadde', 'ANA-784512 · 24.8 T'], ['Hedef hat', 'A Blok Dilme (ADL-01)'], ['Çıktı', '4 alt parti ➔ 4 iş emri']];
+        rows.forEach(([k, v], i) => {
+          el('line', { x1: 22, x2: 368, y1: 138 + i * 38, y2: 138 + i * 38, stroke: '#1e3a52' }, g);
+          txt(g, 22, 163 + i * 38, 14, '#7f97ad', k, { 'font-weight': 700 });
+          txt(g, 140, 163 + i * 38, 15.5, '#f1f5f9', v, { 'font-weight': 800 });
+        });
+
+        // Raw coil bay
+        el('ellipse', { cx: 245, cy: 735, rx: 175, ry: 34, fill: 'url(#spot)' }, z1);
+        el('rect', { x: 70, y: 770, width: 350, height: 42, rx: 10, fill: 'rgba(6,16,31,.92)', stroke: '#38bdf8', 'stroke-opacity': .5 }, z1);
+        txt(z1, 245, 797, 16, '#e2e8f0', 'ANA RULO · ANA-784512 · 24.8 T', { 'text-anchor': 'middle', 'font-weight': 800 });
+      }
+
+      // ═══════════ ZONE 2: SLITTER ═══════════
+      const z2 = zone('z2');
+      img(z2, 'slitter.png', 450, 300, 600, 322, { filter: 'url(#shadow)' });
+      woCard(z2, 470, 652, 560, '#38bdf8', '02 · A BLOK · DİLME HATTI (ADL-01)', 'WO-DIL-1048', '4 alt parti: DIL-01 · DIL-02 · DIL-03 · DIL-04');
+      const chipSlit = chip(z2, 846, 664, '#38bdf8');
+      const sparks = el('g', { transform: 'translate(772 412)', opacity: 0 }, z2);
+      el('circle', { r: 46, fill: '#a5f3fc', opacity: .28, filter: 'url(#glow)' }, sparks);
+      el('path', { d: 'M-40 0H40M0-40V40M-28-28L28 28M-28 28L28-28', stroke: '#e0f2fe', 'stroke-width': 3, 'stroke-linecap': 'round' }, sparks);
+      el('circle', { r: 8, fill: '#fff' }, sparks);
+
+      // ═══════════ ZONE 3: 4 SWIMLANES ═══════════
+      const z3 = zone('z3');
+      const LANES = [
+        { code: '03A', name: 'C BLOK · 25T PRES', mach: 'CPR-25', wo: 'WO-PRS-302', parti: 'DIL-01', color: '#38bdf8', img: 'press.png', r: 1.421, op: 'KOLİLEME', prod: 'box.png', pr: 1.037 },
+        { code: '03B', name: 'D BLOK · BOY KESİM', mach: 'KSM-02', wo: 'WO-KSM-415', parti: 'DIL-02', color: '#10b981', img: 'shear.png', r: 0.730, op: 'SAC DİZİM ➔ ÇEMBERLİ PAKET', prod: 'sheet_pack.png', pr: 1.064 },
+        { code: '03C', name: 'C BLOK · TOROİD SARIM', mach: 'SRM-04', wo: 'WO-SRM-508', parti: 'DIL-03', color: '#a855f7', img: 'winder.png', r: 0.993, op: 'KOLİLEME', prod: 'box.png', pr: 1.037 },
+        { code: '03D', name: 'A BLOK · UNICORE', mach: 'UNC-01', wo: 'WO-UNC-612', parti: 'DIL-04', color: '#f59e0b', img: 'unicore.png', r: 0.827, op: 'DİREKT NÜVE DİZİMİ', prod: 'trafo_core.png', pr: 1.103 }
+      ];
+      const LY = [158, 346, 534, 722];
+      const MCX = 1600, OPX = 1960;
+
+      LANES.forEach((L, i) => {
+        const y = LY[i], c = L.color;
+        const g = el('g', {}, z3);
+        el('rect', { x: 1150, y: y - 86, width: 1100, height: 172, rx: 18, fill: c, 'fill-opacity': .07, stroke: c, 'stroke-opacity': .5, 'stroke-width': 2 }, g);
+
+        // header column
+        el('rect', { x: 1170, y: y - 74, width: 58, height: 26, rx: 7, fill: c }, g);
+        txt(g, 1199, y - 55, 15, '#04121f', L.code, { 'text-anchor': 'middle', 'font-weight': 900 });
+        txt(g, 1238, y - 54, 18.5, '#fff', L.name, { class: 'f-title' });
+        el('rect', { x: 1170, y: y - 38, width: 285, height: 44, rx: 9, fill: 'rgba(4,12,24,.9)', stroke: c, 'stroke-width': 2 }, g);
+        txt(g, 1182, y - 11, 11.5, '#94a3b8', 'İŞ EMRİ', { 'font-weight': 800, 'letter-spacing': '.08em' });
+        txt(g, 1252, y - 6, 25, c, L.wo, { class: 'f-mono' });
+        txt(g, 1170, y + 30, 15, '#cbd5e1', `Parti: ${L.parti} · Makine: ${L.mach}`, { 'font-weight': 700 });
+        L.chip = chip(g, 1170, y + 44, c);
+
+        // machine
+        L.glow = el('ellipse', { cx: MCX, cy: y + 66, rx: 120, ry: 18, fill: c, opacity: .12, filter: 'url(#glow)' }, g);
+        const w = Math.min(250, 168 / L.r), h = w * L.r;
+        L.machine = img(g, L.img, MCX - w / 2, y - h / 2 + 2, w, h, { filter: 'url(#shadow)' });
+
+        // arrows + operation plate
+        el('line', { x1: 1740, y1: y, x2: 1812, y2: y, stroke: c, 'stroke-width': 3, 'marker-end': 'url(#arr)', class: 'flowline' }, g);
+        el('rect', { x: 1822, y: y - 78, width: 276, height: 156, rx: 14, fill: 'rgba(255,255,255,.025)', stroke: c, 'stroke-opacity': .7, 'stroke-dasharray': '8 6', 'stroke-width': 1.8 }, g);
+        txt(g, OPX, y - 56, 14, c, L.op, { 'text-anchor': 'middle', 'font-weight': 900, 'letter-spacing': '.05em' });
+        L.ready = el('g', { opacity: 0 }, g);
+        el('rect', { x: OPX - 52, y: y + 50, width: 104, height: 24, rx: 12, fill: '#064e3b', stroke: '#10b981' }, L.ready);
+        txt(L.ready, OPX, y + 67, 12.5, '#6ee7b7', 'HAZIR ✓', { 'text-anchor': 'middle', 'font-weight': 900 });
+        el('line', { x1: 2106, y1: y, x2: 2238, y2: y, stroke: c, 'stroke-width': 3, 'marker-end': 'url(#arr)', class: 'flowline', opacity: .8 }, g);
+      });
+
+      // ═══════════ ZONE 4: PALLETIZING ═══════════
+      const z4 = zone('z4');
+      el('polygon', { points: '2430,505 2600,425 2770,505 2600,585', fill: '#12304a', stroke: '#38bdf8', 'stroke-width': 2.5 }, z4);
+      el('polygon', { points: '2430,505 2600,585 2600,608 2430,528', fill: '#0a1d2e' }, z4);
+      el('polygon', { points: '2600,585 2770,505 2770,528 2600,608', fill: '#0f2638' }, z4);
+      el('path', { d: 'M2470 505V300H2730V505', fill: 'none', stroke: '#f59e0b', 'stroke-width': 6, 'stroke-linejoin': 'round' }, z4);
+      el('rect', { x: 2580, y: 290, width: 40, height: 24, rx: 5, fill: '#0284c7', stroke: '#22d3ee', 'stroke-width': 2 }, z4);
+      const laser = el('g', { opacity: 0 }, z4);
+      el('polygon', { points: '2600,312 2480,520 2720,520', fill: '#22d3ee', opacity: .2 }, laser);
+      el('line', { x1: 2480, y1: 520, x2: 2720, y2: 520, stroke: '#22d3ee', 'stroke-width': 4, filter: 'url(#glow)' }, laser);
+      woCard(z4, 2400, 652, 400, '#f59e0b', '04 · PALETLEME & KONSOLİDASYON', 'WO-PKT-880', 'Nihai parti: TEMA-PRT-2026-88');
+      const chipPal = chip(z4, 2618, 664, '#f59e0b');
+
+      // converge lines lanes ➔ pallet
+      LY.forEach((y, i) => el('path', { d: `M2250 ${y} C2350 ${y}, 2380 470, 2470 470`, fill: 'none', stroke: LANES[i].color, 'stroke-width': 3, 'stroke-opacity': .55, class: 'flowline' }, F));
+
+      // ═══════════ ZONE 5: DOCK + TRUCK ═══════════
+      const z5 = zone('z5');
+      // road
+      el('polygon', { points: '2960,720 4800,560 4800,410 2960,575', fill: '#0d1724', stroke: '#1e3349', 'stroke-width': 2 }, z5);
+      el('line', { x1: 3000, y1: 650, x2: 4800, y2: 492, stroke: '#facc15', 'stroke-width': 4, 'stroke-dasharray': '30 22', opacity: .55 }, z5);
+      // dock
+      el('polygon', { points: '2880,560 3070,515 3070,600 2880,645', fill: '#24405a', stroke: '#4b6a88', 'stroke-width': 2 }, z5);
+      el('line', { x1: 2880, y1: 620, x2: 3070, y2: 575, stroke: '#f59e0b', 'stroke-width': 7, 'stroke-dasharray': '14 10' }, z5);
+      txt(z5, 2975, 548, 13, '#94a3b8', 'YÜKLEME RAMPASI', { 'text-anchor': 'middle', 'font-weight': 800, 'letter-spacing': '.1em', transform: 'rotate(-13 2975 548)' });
+      woCard(z5, 3070, 690, 460, '#10b981', '05 · SEVKİYAT & LOJİSTİK TIR', 'WO-SVK-990', 'İrsaliye: IRS-2026-9042 · 34 TEMA 2026', 'SEVK EMRİ');
+      const chipTruck = chip(z5, 3342, 702, '#10b981');
+
+      const success = el('g', { transform: 'translate(3240 86)', opacity: 0 }, z5);
+      el('rect', { width: 470, height: 132, rx: 16, fill: 'rgba(3,32,24,.96)', stroke: '#10b981', 'stroke-width': 2.5, filter: 'url(#glow)' }, success);
+      txt(success, 24, 36, 20, '#6ee7b7', '✅ SEVKİYAT TAMAMLANDI · TIR YOLDA', { class: 'f-title' });
+      txt(success, 24, 76, 26, '#ffffff', 'IRS-2026-9042', { class: 'f-mono' });
+      txt(success, 24, 110, 15, '#a7f3d0', 'Parti TEMA-PRT-2026-88 müşteriye sevk edildi', { 'font-weight': 700 });
+
+      // ═══════════ MOVERS ═══════════
+      // flying WO document
+      const doc = el('g', { opacity: 0 }, M);
+      el('rect', { x: -54, y: -66, width: 108, height: 132, rx: 10, fill: '#f0fdff', stroke: '#22d3ee', 'stroke-width': 3, filter: 'url(#glow)' }, doc);
+      el('rect', { x: -44, y: -56, width: 88, height: 24, rx: 5, fill: '#0284c7' }, doc);
+      txt(doc, 0, -39, 12, '#fff', 'İŞ EMRİ', { 'text-anchor': 'middle', 'font-weight': 900 });
+      txt(doc, 0, -10, 13, '#0f2b38', 'WO-DIL-1048', { 'text-anchor': 'middle', class: 'f-mono' });
+      [8, 22, 36].forEach(yy => el('line', { x1: -38, x2: 38, y1: yy, y2: yy, stroke: '#94b8c7', 'stroke-width': 3 }, doc));
+      el('rect', { x: -40, y: 44, width: 80, height: 14, rx: 4, fill: '#d1fae5' }, doc);
+      txt(doc, 0, 55, 9, '#065f46', '4 ALT PARTİ', { 'text-anchor': 'middle', 'font-weight': 900 });
+
+      // master coil
+      const coil = el('g', {}, M);
+      img(coil, 'coil_master.png', -135, -137, 270, 273, { filter: 'url(#shadow)' });
+
+      // slit coils
+      const slits = LANES.map(L => {
+        const g = el('g', { opacity: 0 }, M);
+        img(g, 'slit_coil.png', -38, -42, 76, 84, { filter: 'url(#shadow)' });
+        el('rect', { x: -86, y: -82, width: 172, height: 34, rx: 9, fill: 'rgba(5,14,27,.95)', stroke: L.color, 'stroke-width': 2 }, g);
+        txt(g, -76, -60, 14, '#fff', L.parti, { 'font-weight': 900 });
+        txt(g, 76, -60, 13, L.color, L.wo, { 'text-anchor': 'end', class: 'f-mono' });
+        return g;
+      });
+
+      // products
+      const prods = LANES.map(L => {
+        const g = el('g', { opacity: 0 }, M);
+        const w = 104, h = w * L.pr;
+        img(g, L.prod, -w / 2, -h / 2, w, h, { filter: 'url(#shadow)' });
+        if (L.prod === 'box.png') {
+          el('rect', { x: -w / 2 + 6, y: -h / 2 + 6, width: 26, height: 10, rx: 3, fill: L.color }, g);
+        }
+        return g;
+      });
+
+      // consolidated pallet
+      const pallet = el('g', { opacity: 0 }, M);
+      img(pallet, 'pallet.png', -120, -120, 240, 239, { filter: 'url(#shadow)' });
+
+      // final lot hologram
+      const lot = el('g', { transform: 'translate(2400 96)', opacity: 0 }, M);
+      el('rect', { width: 400, height: 150, rx: 16, fill: 'rgba(30,20,4,.96)', stroke: '#fbbf24', 'stroke-width': 2.5, filter: 'url(#glow)' }, lot);
+      txt(lot, 22, 34, 14, '#fcd34d', 'NİHAİ PARTİ NUMARASI · WO-PKT-880', { 'font-weight': 900, 'letter-spacing': '.04em' });
+      txt(lot, 22, 84, 34, '#fde68a', 'TEMA-PRT-2026-88', { class: 'f-mono' });
+      txt(lot, 22, 122, 14.5, '#fef3c7', '4 alt parti tek palette · Kalite onaylı', { 'font-weight': 700 });
+
+      // truck
+      const truck = el('g', {}, M);
+      const beams = el('g', { opacity: 0 }, truck);
+      el('ellipse', { cx: 3990, cy: 600, rx: 260, ry: 70, fill: 'url(#headGlow)' }, beams);
+      img(truck, 'truck.png', 3010, 240, 880, 407, { filter: 'url(#shadow)' });
+      const loaded = el('g', { opacity: 0 }, truck);
+      el('rect', { x: 3010, y: 196, width: 190, height: 34, rx: 17, fill: '#064e3b', stroke: '#10b981', 'stroke-width': 2 }, loaded);
+      txt(loaded, 3105, 219, 14, '#6ee7b7', 'YÜKLENDİ ✓', { 'text-anchor': 'middle', 'font-weight': 900 });
+      const lights = el('g', { opacity: 0 }, truck);
+      el('circle', { cx: 3878, cy: 590, r: 9, fill: '#fff', filter: 'url(#glow)' }, lights);
+      el('circle', { cx: 3030, cy: 570, r: 7, fill: '#ef4444', filter: 'url(#glow)' }, lights);
+
+      // ═══════════ STEPS ═══════════
+      const STEPS = [
+        { a: 0, b: 4.5, cam: 900, zones: ['z1', 'z2'], label: 'ERP Planlama', t: 'ADIM 1 / 5 · ERP PLANLAMA', d: 'Planlama, Ana İş Emri WO-DIL-1048’i açar. 24.8 tonluk ana rulo (ANA-784512) A Blok Dilme hattına sevk edilir.' },
+        { a: 4.5, b: 9.2, cam: 1120, zones: ['z2', 'z3'], label: 'Dilme · 4 Alt Parti', t: 'ADIM 2 / 5 · DİLME', d: 'Ana rulo 4 alt partiye dilinir. Her parti kendi iş emriyle hattına gider: DIL-01 Pres, DIL-02 Kesim, DIL-03 Sarım, DIL-04 Unicore.' },
+        { a: 9.2, b: 15.4, cam: 1720, zones: ['z3'], label: '4 İş Emriyle Üretim', t: 'ADIM 3 / 5 · ÜRETİM', d: 'Pres (WO-PRS-302) ➔ Koli · Kesim (WO-KSM-415) ➔ Dizim & Paket · Sarım (WO-SRM-508) ➔ Koli · Unicore (WO-UNC-612) ➔ Direkt Dizim.' },
+        { a: 15.4, b: 19.5, cam: 2350, zones: ['z3', 'z4'], label: 'Paletleme', t: 'ADIM 4 / 5 · PALETLEME', d: '4 hattın ürünleri tek palette birleşir, lazerle doğrulanır ve ortak Nihai Parti No alır: TEMA-PRT-2026-88 (WO-PKT-880).' },
+        { a: 19.5, b: 28, cam: 2950, zones: ['z4', 'z5'], label: 'Tıra Yükleme & Sevk', t: 'ADIM 5 / 5 · SEVKİYAT', d: 'Palet tıra yüklenir, sevk emri WO-SVK-990 ve irsaliye IRS-2026-9042 kesilir; tır rampadan ayrılarak yola çıkar.' }
+      ];
+
+      const stepper = document.getElementById('stepper');
+      const stepEls = STEPS.map((s, i) => {
+        if (i) { const a = document.createElement('span'); a.className = 'arrow'; a.textContent = '➔'; stepper.appendChild(a); }
+        const d = document.createElement('div');
+        d.className = 'step'; d.innerHTML = `<span class="n">${i + 1}</span><span>${s.label}</span>`;
+        d.onclick = () => jump(i);
+        stepper.appendChild(d);
+        return d;
+      });
+
+      // ═══════════ RENDER ═══════════
+      const svg = document.getElementById('scene');
+      const narrT = document.getElementById('narrT'), narrD = document.getElementById('narrD');
+      let t = 0, playing = true, speed = 1, autoCam = true, overview = false;
+      let camX = 0, camTarget = 0, lastStep = -1, last = performance.now();
+
+      const SLIT_START = [[930, 470], [960, 505], [990, 540], [1020, 575]];
+      const PAL = [2600, 440];
+
+      function render(t, dt) {
+        const si = STEPS.findIndex(s => t >= s.a && t < s.b);
+        const step = si < 0 ? STEPS.length - 1 : si;
+        if (step !== lastStep) {
+          lastStep = step;
+          stepEls.forEach((e, i) => { e.classList.toggle('active', i === step); e.classList.toggle('done', i < step); });
+          narrT.textContent = STEPS[step].t; narrD.textContent = STEPS[step].d;
+        }
+        for (const id in zones) zones[id].style.opacity = overview || STEPS[step].zones.includes(id) ? 1 : .38;
+
+        // 1 · WO document ERP ➔ slitter
+        const pd = win(t, .4, 3.2);
+        const [dx, dy] = bez([250, 230], [520, 120], [700, 360], pd);
+        setT(doc, dx, dy, lerp(.85, 1, pd)); setO(doc, fade(t, .3, .7, 3.4, 4));
+
+        // master coil ➔ uncoiler
+        const pc = win(t, 2.2, 4.4);
+        setT(coil, lerp(245, 585, pc), lerp(620, 400, pc), lerp(1, .5, pc));
+        setO(coil, clamp((4.8 - t) / .4) + (t > 27.4 ? 1 : 0));
+
+        // 2 · slitting
+        chipSlit.set(t < 4.4 ? 'wait' : t < 8 ? 'run' : 'done');
+        setO(sparks, t > 4.6 && t < 7.8 ? .35 + .65 * Math.abs(Math.sin(t * 24)) : 0);
+
+        slits.forEach((g, i) => {
+          const app = clamp((t - 6 - i * .2) / .4);
+          const pm = win(t, 7.2, 9.4);
+          const [x, y] = bez(SLIT_START[i], [1110, LY[i]], [1480, LY[i]], pm);
+          setT(g, x, y, 1);
+          setO(g, app * clamp((10 - t) / .5));
+        });
+
+        // 3 · lanes
+        LANES.forEach((L, i) => {
+          const run = t >= 9.6 && t < 12.6;
+          L.chip.set(t < 9.6 ? 'wait' : run ? 'run' : 'done');
+          L.glow.setAttribute('opacity', run ? (.25 + .35 * Math.abs(Math.sin(t * 6 + i))).toFixed(2) : .1);
+          if (i === 0 && L.machine) L.machine.setAttribute('transform', run ? `translate(0 ${(Math.max(0, Math.sin(t * 9)) * 4).toFixed(1)})` : '');
+          setO(L.ready, clamp((t - 12.4) / .3) * clamp((15.2 - t) / .3));
+
+          const p = prods[i];
+          const pIn = win(t, 10.6, 12.2);
+          const pOut = win(t, 13.3 + i * .15, 15.1 + i * .15);
+          let x = lerp(1700, OPX, pIn), y = LY[i] + 8, s = lerp(.7, 1, pIn);
+          if (pOut > 0) {
+            const [bx, by] = bez([OPX, LY[i] + 8], [2330, LY[i]], PAL, pOut);
+            x = bx; y = by; s = lerp(1, .55, pOut);
+          }
+          setT(p, x, y, s);
+          setO(p, clamp((t - 10.5) / .3) * clamp((15.5 + i * .15 - t) / .3));
+        });
+
+        // 4 · pallet
+        chipPal.set(t < 15 ? 'wait' : t < 18 ? 'run' : 'done');
+        setO(laser, t > 15.6 && t < 17.8 ? .35 + .65 * Math.abs(Math.sin(t * 14)) : 0);
+        setO(lot, fade(t, 16.2, 16.7, 19.6, 20.1));
+
+        const pl = win(t, 19.6, 21.4);
+        setT(pallet, lerp(PAL[0], 3140, pl), lerp(PAL[1], 500, pl), lerp(1, .55, pl));
+        setO(pallet, clamp((t - 15.1) / .5) * clamp((21.7 - t) / .3));
+
+        // 5 · truck
+        const isLoaded = t >= 21.5;
+        const pdrv = win(t, 22.4, 26.8);
+        const tdx = pdrv * pdrv * 1650, tdy = -tdx * .085;
+        truck.setAttribute('transform', `translate(${tdx.toFixed(1)} ${tdy.toFixed(1)})`);
+        setO(truck, clamp((27.6 - t) / .5));
+        setO(loaded, isLoaded ? clamp((24 - t) / .6) : 0);
+        setO(lights, isLoaded ? .7 + .3 * Math.abs(Math.sin(t * 8)) : 0);
+        setO(beams, isLoaded ? .9 : 0);
+        chipTruck.set(t < 19.6 ? 'wait' : t < 22.4 ? 'run' : 'done');
+        setO(success, clamp((t - 22.6) / .5) * clamp((27.8 - t) / .4));
+
+        // camera
+        if (autoCam && !overview) {
+          camTarget = STEPS[step].cam;
+          if (step === 4) camTarget = Math.min(3700, 2950 + tdx * .85);
+        }
+        camX = lerp(camX, camTarget, clamp(dt * 2.6));
+        const cx = clamp(camX - VW / 2, 0, STAGE_W - VW);
+        svg.setAttribute('viewBox', overview ? `0 0 ${STAGE_W} ${VH}` : `${cx.toFixed(1)} 0 ${VW} ${VH}`);
+
+        tl.value = (t / TOTAL * 1000).toFixed(0);
+        timeEl.textContent = `00:${String(Math.floor(t)).padStart(2, '0')} / 00:${TOTAL}`;
+      }
+
+      // ═══════════ CONTROLS ═══════════
+      const tl = document.getElementById('timeline'), timeEl = document.getElementById('time');
+      const playBtn = document.getElementById('playBtn'), speedBtn = document.getElementById('speedBtn');
+      const camBtn = document.getElementById('camBtn'), camTxt = document.getElementById('camTxt');
+      const ovBtn = document.getElementById('overviewBtn');
+
+      function setAutoCam(v) { autoCam = v; camBtn.classList.toggle('manual', !v); camTxt.textContent = v ? 'Kamera: Takip' : 'Kamera: Manuel'; }
+      function jump(i) { t = STEPS[i].a + .05; overview = false; ovBtn.classList.remove('active'); setAutoCam(true); render(t, 1); }
+
+      playBtn.onclick = () => { playing = !playing; playBtn.textContent = playing ? '⏸' : '▶'; };
+      tl.oninput = e => { t = e.target.value / 1000 * TOTAL; render(t, 1); };
+      const speeds = [1, 1.5, 2, .5]; let sp = 0;
+      speedBtn.onclick = () => { sp = (sp + 1) % speeds.length; speed = speeds[sp]; speedBtn.textContent = speed + 'x'; };
+      camBtn.onclick = () => setAutoCam(!autoCam);
+      ovBtn.onclick = () => { overview = !overview; ovBtn.classList.toggle('active', overview); };
+
+      // drag to pan
+      const stage = document.getElementById('stage');
+      let drag = null;
+      stage.addEventListener('mousedown', e => { if (overview) return; drag = { x: e.clientX, cam: camX }; setAutoCam(false); });
+      addEventListener('mousemove', e => {
+        if (!drag) return;
+        const k = VW / stage.clientWidth;
+        camTarget = camX = clamp(drag.cam - (e.clientX - drag.x) * k, VW / 2, STAGE_W - VW / 2);
+      });
+      addEventListener('mouseup', () => drag = null);
+
+      // fullscreen
+      const toggleFS = () => document.fullscreenElement ? document.exitFullscreen().catch(() => { }) : document.documentElement.requestFullscreen().catch(() => { });
+      document.getElementById('fsBtn').onclick = toggleFS;
+      addEventListener('keydown', e => {
+        if (e.key === 'F10' || e.key === 'F11') { e.preventDefault(); toggleFS(); }
+        if (e.code === 'Space') { e.preventDefault(); playBtn.click(); }
+      });
+
+      function tick(now) {
+        const dt = Math.min(.1, (now - last) / 1000); last = now;
+        if (playing) t = (t + dt * speed) % TOTAL;
+        render(t, dt);
+        requestAnimationFrame(tick);
+      }
+      camX = STEPS[0].cam;
+      render(0, 1);
+      // Export modu (?freeze=SN[&overview=1]): animasyonu belirli bir saniyede
+      // dondurur — LinkedIn carousel ekran görüntüleri için.
+      const qs = new URLSearchParams(location.search);
+      if (qs.has('freeze')) {
+        t = Math.min(TOTAL - 0.01, Math.max(0, parseFloat(qs.get('freeze')) || 0));
+        playing = false;
+        playBtn.textContent = '▶';
+        if (qs.has('overview')) { overview = true; ovBtn.classList.add('active'); }
+        render(t, 1);
+      }
+      // Video kaydı için kare-kare deterministik ilerletme kancası
+      window.setVideoTime = (sec, dt = 1 / 24) => {
+        playing = false;
+        t = Math.min(TOTAL - 0.01, Math.max(0, sec));
+        render(t, dt);
+      };
+      requestAnimationFrame(tick);
+    })();
+  </script>
+</body>
+
+</html>

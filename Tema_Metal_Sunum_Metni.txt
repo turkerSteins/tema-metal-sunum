@@ -1,0 +1,215 @@
+================================================================================
+           TEMA METAL & CODEMASTER MES DİJİTAL DÖNÜŞÜM PROJESİ
+           YÖNETİM KURULU VE OPERASYON DEĞERLENDİRME TOPLANTISI
+       RESMİ VE KAPSAMLI SUNUM KONUŞMA METNİ (SLAYT SLAYT EKRAN AKIŞI)
+================================================================================
+
+Tarih: 2026
+Proje: Tema Metal Uçtan Uca Üretim Yürütme (MES), İzlenebilirlik, Bakım ve Enerji Yönetimi
+Lokasyon: Tema Metal Genel Merkez / Yönetim Toplantı Salonu
+Hedef Kitle: Yönetim Kurulu Başkanı, Fabrika Müdürü, Üretim, Kalite, Bakım, Mali İşler ve IT Liderleri
+Sunum Süresi: ~20-25 Dakika Sunum + Soru-Cevap Oturumu
+Önemli Not: Ekranda ayrı bir "Kalite" veya "Enerji" sayfası bulunmamaktadır. Kalite güvencesi (Giriş Kalite IQC & Çıkış Kalite) Altyapı ve İzometrik Akış slaytlarına; Anlık Bakım & WhatsApp entegrasyonu Dijital İkiz slaytına; 360° Enerji ve GES altyapısı ise Stratejik Yönetim Kokpiti slaytına doğal olarak yedirilmiştir.
+
+
+================================================================================
+SLAYT DİZİLİMİ VE KONUŞMA GÜNDEMİ (EKRANDA GÖRÜNEN 6 SLAYT)
+================================================================================
+SLAYT 1 (S0) · Kapak: Açılış, Vizyon ve Dijital Fabrika Hedefi
+SLAYT 2 (S1) · Proje Kapsamı & Saha Altyapısı (56 PLC, A-C-D Blokları, C Blok 25 Terazi & Barkod, Giriş Kalite IQC ve ERP)
+SLAYT 3 (S2) · Uçtan Uca Canlı İzometrik Akış (Rulo Kabul, Dilme 2 Setup Kontrolü, Pres/Kesim Kolileme, Çıkış Kalite ve Sevkiyat)
+SLAYT 4 (S5) · 3D Fabrika Dijital İkizi (Canlı Makine Statüleri, Telemetri, El Terminalinden Duruş & WhatsApp Arıza Grubu)
+SLAYT 5 (S6) · Stratejik Yönetim Kokpiti (Canlı OEE, Vardiya Karnesi, BEDAŞ API, 56 Makine Analizörü, Hava Hatları ve 6 Inverterlı GES)
+SLAYT 6 (S7) · Stratejik Kazanımlar (ROI), Yönetim Özeti ve Soru-Cevap (Q&A)
+
+
+================================================================================
+SLAYT 1 (S0): KAPAK — AÇILIŞ, VİZYON VE DİJİTAL FABRİKA HEDEFİ
+================================================================================
+[Ekranda Görünüm: Tema Metal & CodeMaster logoları, "Dijital Dönüşüm Projesi: Dijital Üretim ve Enerji Yönetimi" ana başlığı, dinamik parçacık ağı]
+[Ses Tonu: Kendinden emin, vizyoner, saygılı ve enerjik]
+
+"Saygıdeğer Yönetim Kurulu Başkanım, Değerli Fabrika Yöneticilerim ve Kıymetli Çalışma Arkadaşlarım;
+
+Bugün Tema Metal çatısı altında gururla hayata geçirdiğimiz CodeMaster Üretim Yürütme ve Dijital Dönüşüm Sistemimizin operasyonel değerlendirme toplantısına hepiniz hoş geldiniz.
+
+Bugün sizlere yalnızca bilgisayar ekranlarında çalışan bir yazılımı tanıtmayacağız. Bugün, fabrikamızın fiziksel dünyası ile kurumsal planlama aklımızı, yani sahadaki makinelerimiz ile ERP sistemimizi nasıl tek bir yaşayan organizma haline getirdiğimizi konuşacağız.
+
+Bir sanayi şirketi için dijital dönüşüm; sadece ekrana grafik çizdirmek değildir. Dijital dönüşüm; sahaya giren tek bir sac bobinin nerede olduğunu saniyesinde bilmektir. Operatörün tezgaha yanlış malzeme bağlamasını daha setup anında kilitlemektir. Çıkan kolinin gramajını terazide doğrulamaktır. Bir pres durduğunda bakımcının cebindeki WhatsApp bildirimine anında düşmektir ve çatımızdaki güneş santralinden makinelerimizin çektiği her bir kilowatt elektriği kuruşu kuruşuna hesaplayabilmektir.
+
+Bugün ekranda göreceğiniz her veri, fabrikamızın kalbinden, bizzat A, C ve D bloklarımızdaki tezgahlardan gelen yüzde yüz canlı saha gerçekliğidir.
+
+İzninizle sunumumuza sahadaki güçlü donanım ve haberleşme omurgamızla başlayalım."
+
+
+================================================================================
+SLAYT 2 (S1): PROJE KAPSAMI & SAHA ALTYAPISI (56 PLC, A-C-D BLOKLARI, TERAZİLER VE GİRİŞ KALİTE)
+================================================================================
+[Ekranda Görünüm: 02 · Proje Kapsamı başlığı, 56 PLC Ağı, A-C-D Blok Dağılımı, ERP Çift Yönlü Veri Köprüsü, 25 Terazi & Barkod Entegrasyon Kartları]
+[Ses Tonu: Teknik açıdan net, operasyonel gerçeklere hakim]
+
+"Değerli Yöneticilerim;
+
+Bir üretim sisteminin başarısı, sahadan aldığı verinin sıhhatine bağlıdır. Bu projede Tema Metal sahasında eşine az rastlanır bir otomasyon ve veri toplama omurgası kurduk:
+
+Öncelikle sahadaki donanım gücümüzü özetleyelim:
+- Fabrikamız genelinde toplam 56 adet endüstriyel PLC hattımızı doğrudan merkezi ağa bağladık.
+- Tesisimiz A Blok, C Blok ve D Blok olmak üzere üç stratejik üretim bloğuna ayrılmıştır.
+- Özellikle yüksek çevrimli parça üretimimizin ve presleme gücümüzün merkezi olan C Blok preslerimizde; tam 25 adet hassas endüstriyel terazi ve 25 adet yüksek hızlı barkod okuyucu istasyonunu doğrudan tezgahlara entegre ettik.
+
+Peki bu mimaride süreç nasıl başlıyor ve kalite güvencemiz nerede devreye giriyor?
+
+Süreç hammadde kabul sahamıza gelen tonlarca ağırlığındaki sac rulolarla başlar.
+Hammadde kapıdan girdiği anda ERP sistemimizde resmi rulo kaydı açılır ve ruloya benzersiz bir Parti Numarası (Lot No) atanır. Endüstriyel barkodu basılarak rulonun üzerine yapıştırılır.
+
+Fakat burada fabrikamızın tavizsiz ilk kalite kuralı devreye girer:
+Bir ruloya barkod yapıştırıldı diye asla ve asla doğrudan üretime verilemez!
+Rulo hemen Giriş Kalite (IQC) kontrolüne alınır. Kalite ekibimiz malzemenin kalınlığını, sertliğini ve spektro analiz sertifikasını kontrol eder. Kalite onay verdiği anda sistem ERP'ye 'Bu rulo kullanılabilir stoğa alınmıştır' sinyalini gönderir. Kalite onayı olmayan hiçbir rulo ERP'de kullanılabilir stoğa geçemez; bloke statüsünde kalır.
+
+Böylece hatalı veya şartnameye uymayan bir malzemenin daha fabrikaya adım attığı ilk dakikada tezgahlara sızması sistemsel olarak engellenmiş olur."
+
+
+================================================================================
+SLAYT 3 (S2): UÇTAN UCA CANLI İZOMETRİK AKIŞ (DİLME 2 SETUP KONTROLÜ, PRES/KESİM, ÇIKIŞ KALİTE VE SEVKİYAT)
+================================================================================
+[Ekranda Görünüm: 03 · Uçtan Uca Akış, Canlı İzometrik Üretim Animasyonu, Mal Kabul, A Blok Dilme, C Blok Presler, D Blok Kesim, Tartım/Koli İstasyonu, Çıkış Kalite ve Sevkiyat Tırı]
+[Ses Tonu: Anlatımı ekrandaki hareketli nesnelerle senkronize eden, akıcı ve heyecan uyandırıcı]
+
+"Şimdi lütfen dikkatinizi ekrandaki canlı izometrik üretim ve izlenebilirlik akışımıza vermenizi rica ediyorum. Burada izlediğiniz her adım, sahada birebir uyguladığımız standart operasyon prosedürümüzdür:
+
+1. AŞAMA · HAMMADDE VE A BLOK DİLME SETUP DİSİPLİNİ:
+Giriş kaliteden onay alan ana bobinler, preslerimizin kalıp ölçülerine göre dilinmek üzere A Blok Dilme istasyonuna gelir. ERP üzerinden 'Dilme İş Emri' (ekranda gördüğünüz gibi WO-DIL-1048) açılır.
+Operatör dilme tezgahının başına geçer, el terminalinden iş emrini seçer ve 'Setup Başlat' der. Setup başladığında tezgaha bağlayacağı ana bobinin barkodunu okutmak zorundadır.
+
+İşte tam bu saniyede CodeMaster MES milisaniyeler içinde 2 KRİTİK OTOMATİK KONTROL yapar:
+- Birinci Kontrol (İş Emri Reçete Eşleşmesi): Okutulan bu rulo, açılan dilme iş emrinin reçetesiyle eşleşik mi? Bu rulo doğru sac mı?
+- İkinci Kontrol (ERP Stok & Kalite Durumu): Bu rulo ERP stoklarımızda gerçekten mevcut mu ve giriş kalite onaylı 'kullanılabilir' statüde mi?
+
+Eğer bu iki kontrolden biri dahi tutmuyorsa sistem setup'ı anında kilitler, ekranda kırmızı ikaz verir ve operatörün bıçakları çalıştırmasına izin vermez. Yanlış rulo bağlama riski sıfırdır.
+
+2. AŞAMA · KİLOGRAM BAZLI DİLME VE YARI MAMUL PARTİ NUMARASI:
+İki kontrol de geçerse setup tamamlanır, dilme işlemi yapılır. Operatör 'Üretim Onaylama' ekranında çıkan dilimleri tartar; sistem kilogram oranlarıyla dilimleri onaylar. Her bir dilim rulo için anında bağımsız bir yarı mamul parti barkodu basılır ve ruloya yapıştırılır.
+
+3. AŞAMA · C BLOK VE D BLOK DAĞILIMI (PRES & KESİM İŞ EMİRLERİ):
+Animasyonda gördüğünüz gibi; dilinen rulolar iki kola ayrılır:
+- Bir kısmı C Blok Pres hatlarına iş emriyle (WO-PRS-302) sevk edilir.
+- Bir kısmı D Blok Boy Kesim hatlarına iş emriyle (WO-KSM-415) yönlendirilir.
+
+4. AŞAMA · C BLOK 25 PRES HATTI, TERAZİ VE KOLİ BARKODLAMA:
+C Blok'taki 25 pres hattımızda üretim doğrudan koli bazında yürür:
+- Operatör tezgaha gelen dilim ruloyu okutur, reçete doğrulanır.
+- Pres parçayı basar, parçalar kolilere dökülür.
+- Koli dolduğunda teraziye konur; sistem birim ağırlık üzerinden koli içindeki parça adedini ve gramaj toleransını saniyeler içinde doğrular.
+- Operatör butona bastığı anda koli barkodu yazıcıdan fırlar ve kolinin üzerine yapıştırılır.
+- Koli onaylandığı anda üretim adedi hem CodeMaster MES ekranına hem de eş zamanlı olarak ERP'ye mamul üretimi olarak anında işlenir.
+
+5. AŞAMA · ÇIKIŞ KALİTE ONAYI VE SEVKİYAT:
+Kolilenen ve paletlenen mamuller sevkiyat rampasına gelmeden önce son kontrolümüz olan Çıkış Kalite Kontrol birimimizin dijital onayından geçer. Toleransı, ambalajı ve etiketi tam olan ürünler sisteme 'Sevkiyata Hazır' olarak düşer, irsaliyesi ERP'den otomatik kesilir ve ekranda gördüğünüz sevkiyat tırına yüklenerek müşteriye yola çıkar.
+
+Gördüğünüz gibi; bobinden dilmeye, presteki teraziden kolilemeye ve sevkiyata kadar tek bir kör nokta bırakmadık."
+
+
+================================================================================
+SLAYT 4 (S5): 3D FABRİKA DİJİTAL İKİZİ (CANLI TELEMETRİ & EL TERMİNALİNDEN WHATSAPP ARIZA BİLDİRİMİ)
+================================================================================
+[Ekranda Görünüm: 04 · Dijital İkiz başlığı, Tema Metal 3D Fabrika Dashboard & Saha Layout Haritası, 56 PLC Canlı Durum Pilleri (Yeşil/Kırmızı/Sarı), WhatsApp Arıza Bildirimi Vurgusu]
+[Ses Tonu: Operasyonel çevikliği ve hızı vurgulayan, pratik saha odaklı]
+
+"Şimdi slaytımızı ilerletiyoruz ve fabrikamızın canlı dijital ikizine geliyoruz.
+
+Şu anda ekranda gördüğünüz görsel; A, C ve D Bloklarımızdaki 56 makinemizin fabrika yerleşim planı üzerindeki anlık canlı durumudur:
+- Yeşil yanan hatlarımız: Aktif olarak üretim yapan makinelerimizdir.
+- Sarı yanan hatlarımız: Setup veya kalıp bağlama aşamasındaki makinelerimizdir.
+- Kırmızı yanan hatlarımız: Duruşta veya arızada olan makinelerimizdir.
+
+Peki sahada bir duruş olduğunda ne yaşanıyor?
+Sanayide en büyük zaman kaybı; arıza olduğunda operatörün bakımcıyı aramak için sahada koşturması veya telefonla ulaşmaya çalışmasıdır. Biz bu projede bakım refleksimizi kökten değiştirdik:
+
+Sahadaki 56 hattımızda şu entegrasyon çalışmaktadır:
+Bir pres durduğunda veya kalıpta problem çıktığında; operatör saniyeler içinde el terminalindeki arıza bildirim ekranından arıza türünü seçip butona basar.
+Operatör butona bastığı milisaniyede, CodeMaster sistemi BU ÇAĞRIYI ANINDA İLGİLİ BAKIM WHATSAPP GRUBUNA DÜŞÜRÜR!
+
+Bakım ekibimizin cebindeki WhatsApp mesajında şunlar yazar:
+- Hangi Blok (Örneğin: C Blok)
+- Hangi Makine (Örneğin: Pres No 14)
+- Hangi Operatör
+- Arıza Nedeni ve Başlangıç Saati
+
+Bakım teknisyenimiz fabrikanın neresinde olursa olsun, cebindeki bildirimi gördüğü an saniyeler içinde o tezgahın başına intikal eder. Arıza müdahale süremiz dakikalardan saniyelere inmiştir.
+
+Ayrıca sistem arkada tüm duruşları kaydettiği için, yönetim olarak hangi makinenin en çok mekanik arıza yaptığını, hangi kalıbın kronik problem çıkardığını Pareto grafikleriyle net olarak görebiliyoruz."
+
+
+================================================================================
+SLAYT 5 (S6): STRATEJİK YÖNETİM KOKPİTİ (CANLI OEE, VARDİYA KARNESİ VE 360° ENERJİ ANALİTİĞİ)
+================================================================================
+[Ekranda Görünüm: 05 · Yönetim Kokpiti başlığı, Gerçek Zamanlı Yönetim Ekranı, Canlı OEE %84.6, Üretim & Tartım Kartı, BEDAŞ API 312.4 kW, 56 Analizör, Hava Hatları ve 6 Inverterlı GES 185 kW]
+[Ses Tonu: Stratejik, finansal ve üst yönetim düzeyinde sonuç odaklı]
+
+"Değerli Hazirun;
+
+İşte burası şirketimizin karar destek ve stratejik yönetim merkezidir. Üst yönetim ve fabrika müdürümüz sabah bilgisayarını açtığında veya cep telefonundan sisteme girdiğinde tek bir ekranda fabrikanın röntgenini çeker.
+
+Bu ekranda 3 temel sütunumuz bulunmaktadır:
+
+1. SÜTUN · CANLI OEE VE GENEL PERFORMANS:
+Ekranda gördüğünüz gibi genel tesis OEE'miz anlık %84.6 seviyesindedir. Kullanılabilirlik, Performans ve Kalite bileşenleri PLC'lerden gelen gerçek parça vuruşlarıyla anlık hesaplanır. Vardiya bittiğinde sistem tek tuşla sıfır kağıtla dijital Vardiya Devir Karnesini (Shift Handover) üretir ve ERP'ye aktarır.
+
+2. SÜTUN · ÇIKTI VE TARTIM DOĞRULAMASI:
+C Blok'taki 25 terazimizden gelen net koli tartımları, hedef vs. gerçekleşen tonajlar ve hat hızları canlı olarak takip edilir.
+
+3. SÜTUN · 360° BÜTÜNLEŞİK ENERJİ YÖNETİMİ:
+Ve geldik projemizin doğrudan nakit akışımıza ve kârlılığımıza dokunan en kritik ayağına: Enerji Yönetimi.
+Biz enerjiyi sadece ay sonunda gelen faturadan ibaret görmüyoruz. Bu ekranda 4 katmanlı entegre bir enerji mimarisi çalışıyor:
+
+- BEDAŞ API Şebeke Entegrasyonu: Fabrikamızın trafo ve sayaç verilerini doğrudan BEDAŞ API'si üzerinden canlı çekiyoruz. Ekranda gördüğünüz 312.4 kW anlık şebeke yükümüzdür. Pik saat tarifelerini ve reaktif sınırları saniye saniye izliyoruz.
+- 56 Makinede Ayrı Ayrı Enerji Analizörleri: 56 makinemizin her birinde bağımsız elektrik analizörü vardır. Hangi presin bir ton sac basarken kaç kWh elektrik harcadığını biliyoruz. Bu bize ürün bazında kuruşu kuruşuna gerçek enerji maliyetini verir.
+- Blok Bazlı Basınçlı Hava Sayaçları: Basınçlı hava sanayinin en pahalı enerjisidir. A, C ve D bloklarımızdaki debimetrelerle hatlardaki basınç düşüşlerini ve özellikle mesai dışındaki hava kaçaklarını anında tespit ederek kompresör israfını önlüyoruz.
+- 6 Inverterlı Çatı GES Takibi: Çatımızdaki Güneş Enerjisi Santralimizde tam 6 adet solar inverter bulunmaktadır. Ekranda canlı görüyorsunuz; 185 kW temiz güneş elektriği üretiyoruz. Güneşten gelen bu üretimi makinelerimizin tüketimiyle anlık mahsuplaştırarak en yüksek güç çeken preslerimizi güneş saatlerine göre planlayabiliyoruz.
+
+Kısacası; ürettiğimiz parçayı gramajıyla, harcadığımız elektriği kuruşuyla, ürettiğimiz yeşil enerjiyi kilowattıyla bu tek yönetim kokpitinden yönetiyoruz."
+
+
+================================================================================
+SLAYT 6 (S7): STRATEJİK KAZANIMLAR (ROI), YÖNETİM ÖZETİ VE SORU-CEVAP (Q&A)
+================================================================================
+[Ekranda Görünüm: TEŞEKKÜRLER, MCS & Tema Metal Stratejik Ortaklık Logoları, 4 Büyük ROI Sayacı: +%15 OEE, -%40 Duruş Müdahalesi, %100 Uçtan Uca İzlenebilirlik, -%18 Enerji Maliyeti]
+[Ses Tonu: Samimi, teşekkür eden, güçlü ve net kapanış]
+
+"Saygıdeğer Yönetim Kurulu Başkanım, Değerli Yöneticilerim;
+
+Özetlemek gerekirse; Tema Metal'de hayata geçirdiğimiz bu dijital dönüşüm projesi ile:
+- OEE ve genel fabrika kapasitemizde net %15 artış elde ettik.
+- WhatsApp bildirimleri ve el terminalleri sayesinde duruşlara müdahale süremizi %40 kısalttık.
+- Giriş kalite onaylı hammaddeden dilmedeki 2 setup kontrolüne, terazili kolilemeden çıkış kaliteye kadar %100 uçtan uca dijital izlenebilirlik sağladık.
+- BEDAŞ API'si, 56 analizör, hava sayaçları ve 6 inverterlı GES entegrasyonuyla enerji maliyetlerimizde %18'e varan optimizasyon yakaladık.
+
+Tema Metal artık sahadan anlık beslenen, verisini doğrulamadan tezgahı çalıştırmayan, arızasına anında koşan ve enerjisini kuruşuna kadar yöneten öncü bir dijital sanayi tesisidir.
+
+Bu projeye inanan yönetim kurulumuza, sahada ter döken tüm operatör ve mühendislerimize ve teknoloji ortağımız CodeMaster ekibine teşekkür ederim.
+
+Şimdi varsa sorularınızı memnuniyetle yanıtlamak isterim."
+
+
+================================================================================
+TOPLANTI ESNASINDA YÖNETİMDEN GELEBİLECEK 5 KRİTİK SORU VE CEVAPLARI (Q&A)
+================================================================================
+
+SORU 1: "Operatör dilmede yanlış bir bobin okutursa sistem ne yapar?"
+CEVAP: "Sistem anında kırmızı ikaz verir ve setup'ı kilitler. Sistem iki aşamalı kontrol yapar: Hem bobinin o iş emri reçetesine ait olup olmadığını doğrular hem de bobinin ERP'de giriş kaliteden onay almış 'kullanılabilir stok' statüsünde olup olmadığını denetler. İki şart da sağlanmadan makine çalışamaz."
+
+SORU 2: "WhatsApp arıza entegrasyonu bakım süreçlerini nasıl hızlandırdı?"
+CEVAP: "Eski yapıda operatör arıza olduğunda bakımcıyı telefonla aramak ya da sahada aramak zorunda kalıyordu. Şimdi el terminalinden arıza tipini seçip bastığı anda mesaj doğrudan WhatsApp grubuna düşüyor. Grup içinde tüm bakım ekibi arızayı, makineyi ve saati görüyor. Müdahale süremiz dakikalardan saniyelere indi."
+
+SORU 3: "GES takibi bize operasyonel olarak ne kazandırıyor?"
+CEVAP: "6 adet inverter üzerinden fabrikanın anlık üretimini görüyoruz. Makinelerimizin enerji analizörleriyle eşleştirdiğimizde, yoğun pres operasyonlarımızı güneş üretiminin en yüksek olduğu saatlere planlayarak şebekeden çekilen pahalı elektrik maliyetini minimize edebiliyoruz."
+
+SORU 4: "BEDAŞ API entegrasyonu neden önemli?"
+CEVAP: "Fabrikanın ana trafo ve sayaç verilerini doğrudan BEDAŞ'tan anlık aldığımız için, ay sonunda faturada gelebilecek olası reaktif ceza risklerini veya tarife aşımlarını gün içinde önceden tespit edip önlem alabiliyoruz."
+
+SORU 5: "Preslerdeki terazi ve barkod sistemi operatörü yavaşlatıyor mu?"
+CEVAP: "Hayır efendim, tam tersine hızlandırıyor. Operatörler butonlar ve dokunmatik arayüzlerle çalışıyor. Koli teraziye konduğu anda sistem tolerans kontrolünü saniyeler içinde yapıp barkodu basıyor. Operatörün elle sayım yapma veya kağıt yazma zahmeti tamamen kalktı."
+
+================================================================================
+                         TEMA METAL A.Ş. · 2026
+================================================================================

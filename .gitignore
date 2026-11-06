@@ -1,0 +1,16 @@
+# Geçici render profilleri ve kopya demo klasörü
+export/.chrome_profile/
+export/demo_site/
+export/linkedin/shots/
+export/linkedin/Tema_Metal_Canli_Demo.zip
+
+# Tek seferlik yardımcı betikler
+update_slide2_css.py
+scale_slide2_css.ps1
+restore_v2_css.ps1
+
+# OS / Editör
+.DS_Store
+Thumbs.db
+__pycache__/
+

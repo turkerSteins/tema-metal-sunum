@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tema Metal — Dijital Dönüşüm Projesi</title>
+  <meta name="description" content="Tema Metal Uçtan Uca MES, 3D Dijital İkiz ve 360° Enerji Yönetim Sistemi — MCS × CodeMaster" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tema Metal — Uçtan Uca Dijital Fabrika &amp; MES Projesi" />
+  <meta property="og:description" content="56 PLC hattı, 25 terazi &amp; barkod istasyonu, 3D Dijital İkiz ve 6 inverterli GES entegrasyonuyla uçtan uca dijital dönüşüm." />
+  <meta property="og:image" content="images/og_cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tema Metal — Uçtan Uca Dijital Fabrika &amp; MES Projesi" />
+  <meta name="twitter:description" content="56 PLC hattı, 25 terazi &amp; barkod istasyonu, 3D Dijital İkiz ve 6 inverterli GES entegrasyonuyla uçtan uca dijital dönüşüm." />
+  <meta name="twitter:image" content="images/og_cover.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700;800&family=Orbitron:wght@400;600;700;900&display=swap"
+    rel="stylesheet" />
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ── NAV DOTS (AKTİF SLAYTLAR) ── -->
+  <nav class="nav-dots" id="navDots">
+    <button class="ndot active" data-slide="0" title="Kapak"></button>
+    <button class="ndot" data-slide="1" title="Proje Kapsamı"></button>
+    <button class="ndot" data-slide="2" title="Uçtan Uca Akış"></button>
+    <button class="ndot slide-hidden" data-slide="3" title="Kalite & Bakım"></button>
+    <button class="ndot slide-hidden" data-slide="4" title="Enerji Yönetimi"></button>
+    <button class="ndot" data-slide="5" title="Fabrika Dijital İkizi"></button>
+    <button class="ndot" data-slide="6" title="Yönetim Kokpiti"></button>
+    <button class="ndot" data-slide="7" title="Teşekkür"></button>
+  </nav>
+
+  <!-- ── ARROWS ── -->
+  <button class="arr arr-prev" id="prevBtn" aria-label="Önceki Slayt">&#8249;</button>
+  <button class="arr arr-next" id="nextBtn" aria-label="Sonraki Slayt">&#8250;</button>
+
+  <!-- ── COUNTER ── -->
+  <div class="counter" id="counter">1 / 8</div>
+
+  <!-- ══════════════════════════════════════════════════════
+     SLIDES DECK
+══════════════════════════════════════════════════════ -->
+  <div class="deck" id="deck">
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     S0 — KAPAK (KULLANICININ ORİJİNAL DÜZENİ KORUNDU)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="slide s-cover active" id="s0">
+      <canvas class="cover-canvas" id="coverCanvas"></canvas>
+      <div class="cover-grid-lines"></div>
+
+      <div class="cover-inner">
+        <!-- Logolar -->
+        <div class="cover-logos">
+          <div class="clogo-wrap">
+            <img src="images/mcs_logo.png" alt="MCS Group" class="clogo clogo-mcs" />
+          </div>
+          <div class="clogo-divider"></div>
+          <div class="clogo-wrap">
+            <img src="images/tema_logo.png" alt="Tema Metal" class="clogo clogo-tema" />
+          </div>
+        </div>
+
+        <!-- Ana Başlık -->
+        <h1 class="cover-title">
+          <span class="ct-line1" id="ctLine1">TEMA METAL</span>
+          <span class="ct-line2">Dijital Dönüşüm Projesi</span>
+        </h1>
+
+        <!-- Alt Başlık -->
+        <p class="cover-sub">Dijital Üretim ve Enerji Yönetimi</p>
+
+        <!-- Özet -->
+        <div class="cover-summary">
+          <span class="cs-icon">⚡</span>
+          <p>Hammadde girişinden mamul çıkışına, kalite kontrolden enerji takibine kadar
+            fabrikanın <strong>tam entegre dijital ikizi.</strong></p>
+        </div>
+
+        <!-- CTA -->
+        <button class="cover-cta" id="coverCta">Sunuma Geç <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     S1 — PROJE KAPSAMI & SAHA ALTYAPISI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="slide s-dark s-scope-slide" id="s1">
+      <div class="slide-bg-orb orb-tl"></div>
+      <div class="slide-bg-orb orb-br"></div>
+
+      <header class="sh sh-compact">
+        <div class="sh-row">
+          <div>
+            <span class="stag">02 · Proje Kapsamı</span>
+            <h2 class="stitle">Saha Altyapısı &amp; Entegrasyon Boyutu</h2>
+          </div>
+          <div class="header-pill-badge">
+            <span class="f-pulse-dot"></span>
+            <span>3 ÜRETİM BLOĞU · CANLI VERİ AĞI</span>
+          </div>
+        </div>
+        <p class="sdesc">A, C ve D üretim bloklarında sıfırdan kurulan endüstriyel haberleşme, tartım ve kontrol
+          altyapısı</p>
+      </header>
+
+      <!-- 4 Mega Metrik Kartı -->
+      <div class="metric-cards" id="metricCards">
+
+        <!-- Kart 1: 56 PLC -->
+        <div class="mc" data-delay="0">
+          <div class="mc-glow"></div>
+          <div class="mc-header-row">
+            <div class="mc-icon">🤖</div>
+            <span class="mc-top-badge">MAKİNE AĞI</span>
+          </div>
+          <div class="mc-num"><span class="countup" data-target="56">56</span><small>Hat</small></div>
+          <div class="mc-unit">Endüstriyel PLC Entegrasyonu</div>
+          <div class="mc-label">A · C · D Üretim Blokları</div>
+          <p class="mc-desc">Dilme, pres ve boy kesim hatlarından anlık veri
+            toplama.</p>
+
+          <div class="mc-super-list">
+            <div class="msl-item"><span class="mchk">✓</span> <strong>OPC-UA - Endüstriyel Protokol</strong></div>
+            <div class="msl-item"><span class="mchk">✓</span> <strong>Anlık &amp; Kilogram Takibi</strong>
+            </div>
+            <div class="msl-item"><span class="mchk">✓</span> <strong>Otomatik Duruş &amp; Hata Kodu Algılama</strong>
+            </div>
+          </div>
+
+          <div class="mc-bar">
+            <div class="mc-bar-fill" style="--bar-w:100%"></div>
+          </div>
+        </div>
+
+        <!-- Kart 2: 25 Terazi + 25 Barkod -->
+        <div class="mc" data-delay="1">
+          <div class="mc-glow"></div>
+          <div class="mc-header-row">
+            <div class="mc-icon">⚖️</div>
+            <span class="mc-top-badge badge-cyan">TAM OTOMATİK</span>
+          </div>
+          <div class="mc-num">
+            <span class="countup" data-target="25">25</span>
+            <span class="mc-plus">+ 25</span>
+          </div>
+          <div class="mc-unit">Terazi &amp; Barkod İstasyonu</div>
+          <div class="mc-label">C Blok Pres &amp; Tartım Hattı</div>
+          <p class="mc-desc">25 hassas endüstriyel terazi ve barkod okuyucu ile tolerans kontrollü koli/rulo tartımı.
+          </p>
+
+          <div class="mc-super-list">
+            <div class="msl-item"><span class="mchk">✓</span> <strong>Otomatik Koli/Rulo Ağırlık Eşleme</strong></div>
+            <div class="msl-item"><span class="mchk">✓</span> <strong>Otomatik 2D Karekod &amp; Seri No Basımı</strong>
+            </div>
+          </div>
+
+          <div class="mc-bar">
+            <div class="mc-bar-fill" style="--bar-w:100%"></div>
+          </div>
+        </div>
+
+        <!-- Kart 3: ERP MES Entegrasyonu -->
+        <div class="mc mc-featured" data-delay="2">
+          <div class="mc-glow"></div>
+          <div class="mc-header-row">
+            <div class="mc-icon">🔗</div>
+            <span class="mc-top-badge badge-blue">CANLI KÖPRÜ</span>
+          </div>
+          <div class="mc-num" style="font-size: clamp(1.8rem, 2.1vw, 2.4rem);">ERP ⟷ MES</div>
+          <div class="mc-unit">Çift Yönlü Canlı Senkron</div>
+          <div class="mc-label">Sipariş · Stok · Operasyon</div>
+          <p class="mc-desc">İş emri ve reçetelerin anlık akışı; tamamlanan üretim ve sarfiyatın ERP'ye canlı teyidi.
+          </p>
+
+          <div class="mc-super-list">
+            <div class="msl-item"><span class="mchk">✓</span> <strong>İş Emri &amp; Reçete Canlı Senkronu</strong></div>
+            <div class="msl-item"><span class="mchk">✓</span> <strong>Backflush Otomatik Hammadde Düşüşü</strong></div>
+            <div class="msl-item"><span class="mchk">✓</span> <strong>Sıfır Manuel Giriş &amp; Tam Bütünlük</strong>
+            </div>
+          </div>
+
+          <div class="mc-bar">
+            <div class="mc-bar-fill" style="--bar-w:100%"></div>
+          </div>
+        </div>
+
+        <!-- Kart 4: 360 Enerji -->
+        <div class="mc" data-delay="3">
+          <div class="mc-glow"></div>
+          <div class="mc-header-row">
+            <div class="mc-icon">⚡</div>
+            <span class="mc-top-badge badge-gold">ISO 50001</span>
+          </div>
+          <div class="mc-num" style="font-size: clamp(1.6rem, 1.8vw, 2.1rem); letter-spacing: 0;">Elektrik · Hava · GES
+          </div>
+          <div class="mc-unit">360° Enerji Yönetimi (EMS)</div>
+          <div class="mc-label">Fabrika Geneli Kaynak Takibi</div>
+          <p class="mc-desc">BEDAŞ API ana tüketimi, 6 GES invertörü üretimi ve blok bazlı hava debimetreleri.</p>
+
+          <div class="mc-super-list">
+            <div class="msl-item"><span class="mchk">✓</span> <strong>Spesifik Enerji Tüketimi (kWh/Ton)</strong></div>
+          </div>
+
+          <div class="mc-bar">
+            <div class="mc-bar-fill" style="--bar-w:100%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blok Bazlı Matris Şeridi -->
+      <div class="block-matrix-strip">
+        <div class="bms-card bms-a">
+          <div class="bms-head">
+            <span class="bms-badge">A BLOK</span>
+            <h4>Dilme Hatları</h4>
+          </div>
+          <p>Hammadde rulo kabulü, hassas dilme operasyonları, yarı mamul rulo etiketleme ve WIP stok yönetimi.</p>
+          <div class="bms-stats"><strong>18</strong> Hat Entegre · <strong>%100</strong> Rulo Doğrulama</div>
+        </div>
+        <div class="bms-sep-line"></div>
+        <div class="bms-card bms-c">
+          <div class="bms-head">
+            <span class="bms-badge badge-cyan">C BLOK</span>
+            <h4>Pres &amp; Tartım Hatları</h4>
+          </div>
+          <p>25 pres istasyonu, terazi entegrasyonlu koli bazlı tartım, hatalı işlem önleyici ve operatör ekranları.</p>
+          <div class="bms-stats"><strong>25</strong> Terazi/Barkod · <strong>Otomatik Tolerans</strong> Kontrollü</div>
+        </div>
+        <div class="bms-sep-line"></div>
+        <div class="bms-card bms-d">
+          <div class="bms-head">
+            <span class="bms-badge badge-emerald">D BLOK</span>
+            <h4>Boy Kesim &amp; Dizim</h4>
+          </div>
+          <p>Boy kesim, özel dizim operasyonları, kalite kontrol geçitleri ve nihai paletleme/sevkiyat hazırlığı.</p>
+          <div class="bms-stats"><strong>13</strong> İstasyon · <strong>Nihai</strong> Parti Numarası Teyidi</div>
+        </div>
+      </div>
+
+      <!-- Hızlı Geçiş Butonu: S1 -> S2 Canlı İzometrik Akış -->
+      <div class="flow-jump-container">
+        <button id="btnJumpToIsoFlow" class="btn-flow-jump" type="button">
+          <span class="bfj-glow"></span>
+          <span class="bfj-icon">⬡</span>
+          <span class="bfj-content">
+            <span class="bfj-title">Canlı İzometrik Üretim &amp; İzlenebilirlik Akışına Geç</span>
+            <span class="bfj-sub">Dilme (4 Rulo) ➔ 2 Pres &amp; 2 Kesim İstasyonu ➔ Koli Paletleme &amp; Ortak Parti No
+              ➔ Tıra Sevkiyat</span>
+          </span>
+          <span class="bfj-arr">➔</span>
+        </button>
+      </div>
+    </section>
+
+
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     S2 — UÇTAN UCA ÜRETİM & İZLENEBİLİRLİK AKIŞI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="slide s-dark s-flow-v2" id="s2">
+      <div class="slide-bg-orb orb-tr"></div>
+      <div class="slide-bg-orb orb-bl"></div>
+      <div class="flow-scan-beam"></div>
+
+      <header class="sh sh-compact" style="margin-bottom:6px; padding-bottom:0;">
+        <div class="sh-row">
+          <div>
+            <span class="stag">03 · Uçtan Uca Akış</span>
+            <h2 class="stitle stitle-sm" style="font-size:clamp(16px, 1.8vw, 24px);">Uçtan Uca Üretim, 4 Kollu Ayrım &amp; Sevkiyat Akışı</h2>
+          </div>
+          <div class="flow-header-right" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <button id="fullscreenToggleBtn" class="flow-iso-launch-btn" style="cursor:pointer;" title="Tam Ekran Modunu Aç/Kapat (F10 / F11)">
+              <span class="iso-icon">⛶</span>
+              <span>Tam Ekran (F10)</span>
+            </button>
+            <a href="izometrik_akis.html" target="_blank" class="flow-iso-launch-btn"
+              title="İzometrik Akış Simülasyonunu Bağımsız Sekmede Aç">
+              <span class="iso-icon">⬡</span>
+              <span>Ayrı Pencere ↗</span>
+            </a>
+            <div class="flow-header-badge">
+              <span class="f-pulse-dot"></span>
+              <span>ÇİFT YÖNLÜ DİJİTAL ENTEGRASYON</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ═══ CANLI İZOMETRİK FABRİKA SÜREÇ SİMÜLASYONU (4 KOLLU AKIŞ & TIRA SEVKİYAT) ═══ -->
+      <div class="iso-slide-container" style="flex:1; width:100%; height:calc(100vh - 115px); min-height:0; border-radius:14px; border:1px solid rgba(56, 189, 248, 0.28); background:rgba(6, 13, 25, 0.7); overflow:hidden !important; position:relative; box-shadow:0 12px 36px rgba(0,0,0,0.5);">
+        <iframe id="isoEmbedIframe" src="izometrik_akis.html?embed=1" scrolling="no" style="width:100%; height:100%; border:none; display:block; background:transparent; overflow:hidden !important;" title="Tema Metal Uçtan Uca İzometrik Üretim ve Sevkiyat Akışı" allow="fullscreen"></iframe>
+      </div>
+
+
+
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     S3 — KALİTE KONTROL & ÇEVİK BAKIM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="slide s-dark s-quality-slide slide-hidden" id="s3">
+      <div class="slide-bg-orb orb-center"></div>
+
+      <header class="sh sh-compact">
+        <div class="sh-row">
+          <div>
+            <span class="stag">04 · Kalite &amp; Bakım</span>
+            <h2 class="stitle">3 Kademeli Kalite Geçitleri ve Duruş Yönetimi</h2>
+          </div>
+          <div class="header-pill-badge badge-green">
+            <span class="f-pulse-dot dot-green"></span>
+            <span>SIFIR HATA STRATEJİSİ</span>
+          </div>
+        </div>
+        <p class="sdesc">Girdiden sevkiyata 3 onay kapısı — operatörden anlık bildirim, WhatsApp entegrasyonu</p>
+      </header>
+
+      <div class="qm-layout-enhanced">
+        <!-- SOL: KALİTE GEÇİTLERİ (3 KADEME + DİJİTAL KALİTE FORMU) -->
+        <div class="qm-col qm-left">
+          <div class="qm-header">
+            <div class="qm-hicon">🛡️</div>
+            <div>
+              <h3>3 Aşamalı Kalite Geçit Mimarisi</h3>
+              <span class="qm-hsub">Üretimin her kritik fazında aktif sistem onayı &amp; tolerans bariyerleri</span>
+            </div>
+          </div>
+
+          <!-- Geçit 1: Girdi -->
+          <div class="qm-gate gate-1">
+            <div class="gate-top-row">
+              <div class="gate-num">Geçit 1 · Giriş Kontrolü (IQC)</div>
+              <div class="gate-status gs-green">✓ ERP Onaylandı</div>
+            </div>
+            <div class="gate-body">
+              <strong>Hammadde &amp; Rulo Giriş Kalite Doğrulaması</strong>
+              <p>Hammaddeler üretime girmeden önce boyut, tolerans, et kalınlığı ve sertifika denetiminden geçer. ERP'ye
+                anında <em>"Kullanılabilir Stok"</em> teyidi düşer.</p>
+              <div class="gate-bullets">
+                <span>• Spektrometre &amp; Kalınlık Teyidi</span>
+                <span>• Tedarikçi Lot Sertifikası Eşleme</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Geçit 2: Proses İçi Otomatik Tolerans & SPC -->
+          <div class="qm-gate gate-2">
+            <div class="gate-top-row">
+              <div class="gate-num">Geçit 2 · Hat İçi Otomatik Tolerans &amp; SPC (IPQC)</div>
+              <div class="gate-status gs-green">✓ Tartım &amp; Interlock OK</div>
+            </div>
+            <div class="gate-body">
+              <strong>İşlem İçi Kalite &amp; Terazi Validasyonu</strong>
+              <p>Pres ve dilme hatlarında parça ve koli tartımları tolerans sınırlarına göre otomatik denetlenir. Sapma
+                anında makine durdurulur (Interlock) ve hatalı baskı engellenir.</p>
+              <div class="gate-bullets">
+                <span>• SPC İstatistiksel Proses Kontrol</span>
+                <span>• Tolerans Dışı Otomatik Hat Kilidi</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Geçit 3: Çıktı & Sevkiyat -->
+          <div class="qm-gate gate-3">
+            <div class="gate-top-row">
+              <div class="gate-num">Geçit 3 · Çıkış &amp; Sevkiyat (OQC)</div>
+              <div class="gate-status gs-green">✓ Şecere Onaylı</div>
+            </div>
+            <div class="gate-body">
+              <strong>Nihai Ürün &amp; Sevkiyat Kalite Doğrulaması</strong>
+              <p>Üretilen paletler stoğa ve sevkiyata çıkmadan önce 2D karekod parti numarası taranır. Müşteri
+                spesifikasyonlarına ve sipariş toleranslarına tam uyum mühürlenir.</p>
+              <div class="gate-bullets">
+                <span>• Müşteri Kalite Sertifikası Çıktısı</span>
+                <span>• El Terminali Yükleme Kontrolü</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ekstra Kart: Dijital Kalite Formları -->
+          <div class="qm-gate gate-extra">
+            <div class="gate-top-row">
+              <div class="gate-num">Dijital Kalite Araçları</div>
+              <div class="gate-status gs-blue">✓ Sıfır Kağıt</div>
+            </div>
+            <div class="gate-body">
+              <strong>Dijital Kontrol Formları &amp; Operatör e-İmza</strong>
+              <p>Kağıt formlar tamamen kalkar; ilk parça onayı ve periyodik numune ölçümleri tabletten dijital
+                imzalanarak ERP'ye arşivlenir.</p>
+              <div class="gate-bullets">
+                <span>• Tablet e-İmza &amp; İlk Parça Onayı</span>
+                <span>• Anlık ERP Kalite Arşivi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ORTA AYRAÇ -->
+        <div class="qm-divider">
+          <div class="qm-div-line"></div>
+          <div class="qm-div-icon">⚡</div>
+          <div class="qm-div-line"></div>
+        </div>
+
+        <!-- SAĞ: ÇEVİK BAKIM & ARIZA YÖNETİMİ -->
+        <div class="qm-col qm-right">
+          <div class="qm-header">
+            <div class="qm-hicon">🔧</div>
+            <div>
+              <h3>Çevik Bakım &amp; Otonom Duruş Yönetimi</h3>
+              <span class="qm-hsub">Hızlı müdahale, mobil eskalasyon ve kök neden analitiği</span>
+            </div>
+          </div>
+
+          <!-- Kart 1: Tek Dokunuş Arıza -->
+          <div class="maint-item">
+            <div class="mi-dot mi-blue"></div>
+            <div class="mi-body">
+              <strong>Tek Dokunuşla Arıza &amp; Duruş Bildirimi</strong>
+              <p>Operatörler el terminallerinden veya HMI panellerinden tek dokunuşla duruş tipi ve arıza kodu seçer.
+                Sistem duruş kronometresini anında başlatır.</p>
+            </div>
+          </div>
+
+          <!-- Kart 2: WhatsApp İnovasyonu -->
+          <div class="maint-innovation">
+            <div class="inno-header">
+              <span class="inno-icon">💬</span>
+              <strong>İnovasyon: WhatsApp &amp; Mobil Eskalasyon</strong>
+              <span class="inno-badge">CANLI ENTEGRASYON</span>
+            </div>
+            <p class="inno-desc">Arıza ve duruş bildirimleri anında ilgili bakım ekibinin <span
+                class="wa-text">WhatsApp</span> grubuna ve mobil ekranlarına düşer. Bakım ekibi sahadan bağımsız
+              <strong>3 kat daha hızlı</strong> aksiyon alır.
+            </p>
+            <div class="inno-phones">
+              <div class="phone-mock">
+                <div class="pm-bar"></div>
+                <div class="pm-msg">
+                  <span class="pm-dot"></span>
+                  <span>⚠️ <strong>CPR-07 Arıza Uyarısı:</strong> Hidrolik Basınç Düşümü<br /><small>CodeMaster MES ·
+                      C
+                      Blok Pres Hattı · şimdi</small></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kart 3: TPM Otonom & Periyodik Bakım -->
+          <div class="maint-item">
+            <div class="mi-dot mi-green"></div>
+            <div class="mi-body">
+              <strong>TPM Otonom &amp; Periyodik Bakım Planlayıcısı</strong>
+              <p>Makinelerin çalışma saati, vuruş sayısı ve enerji yük trendlerine göre periyodik yağlama, filtre ve
+                kalıp bakım iş emirleri otomatik tetiklenir.</p>
+              <div class="mi-subtags">
+                <span>Vuruş / Saat Bazlı Tetik</span>
+                <span>Dijital Bakım Emri</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kart 4: MTTR / MTBF & Pareto -->
+          <div class="maint-item">
+            <div class="mi-dot mi-cyan"></div>
+            <div class="mi-body">
+              <strong>OEE Duruş Analitiği, MTTR &amp; MTBF Raporları</strong>
+              <p>Planlı ve plansız duruşlar pareto grafikleriyle analiz edilir. Ortalama onarım süresi (MTTR) ve
+                arızalar arası süre (MTBF) izlenerek kronik kök nedenler çözülür; yedek parça stoktan düşer.</p>
+              <div class="mi-subtags">
+                <span>Pareto &amp; 5-Neden Analizi</span>
+                <span>Yedek Parça Entegrasyonu</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     S4 — ENERJİ YÖNETİM SİSTEMİ (EMS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="slide s-dark s-ems-slide slide-hidden" id="s4">
+      <div class="slide-bg-orb orb-tl"></div>
+      <div class="slide-bg-orb orb-br"></div>
+
+      <header class="sh sh-compact">
+        <div class="sh-row">
+          <div>
+            <span class="stag">05 · Enerji Yönetimi</span>
+            <h2 class="stitle">360° Enerji Takibi &amp; ISO 50001 Verimlilik Mimarisi</h2>
+          </div>
+          <div class="header-pill-badge badge-gold">
+            <span class="f-pulse-dot dot-gold"></span>
+            <span>GERÇEK ZAMANLI ENERJİ MALİYETLENDİRMESİ</span>
+          </div>
+        </div>
+        <p class="sdesc">Elektrik, basınçlı hava ve güneş enerjisinin tek platformda izlenmesi — makine ve ürün bazlı
+          kWh maliyet görünürlüğü</p>
+      </header>
+
+      <div class="ems-grid-enhanced">
+        <!-- 1. BEDAŞ ŞEBEKE ELEKTRİK -->
+        <div class="ems-card ems-electric">
+          <div class="ems-card-glow"></div>
+          <div class="ems-card-top">
+            <div class="ems-icon-wrap icon-cyan">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+            </div>
+            <div class="ems-card-meta">
+              <span class="ems-badge badge-cyan">BEDAŞ API · CANLI</span>
+              <h3>Ana Şebeke Elektrik</h3>
+            </div>
+          </div>
+
+          <div class="ems-hud-box">
+            <div class="ems-hud-main">
+              <div class="ems-hud-num"><span class="counter countup" data-target="312.4">312.4</span><small>kW</small>
+              </div>
+              <span class="ems-hud-pill pill-cyan">&lt; 1 sn Veri Akışı</span>
+            </div>
+            <div class="ems-hud-subrow">
+              <span>Reaktif Güç: <strong>Cos φ: 0.98</strong></span>
+              <span class="ems-stat-tag stat-good">Sıfır Ceza</span>
+            </div>
+          </div>
+
+          <div class="ems-monitor-box">
+            <div class="emb-head">
+              <span class="emb-subtag">YÜK DALGALANMA MONİTÖRÜ</span>
+              <span class="emb-live-dot"><span class="f-pulse-dot dot-cyan"></span> CANLI</span>
+            </div>
+            <div class="ems-wave-container">
+              <svg class="ems-wave-svg" viewBox="0 0 200 40" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="waveGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="rgba(0, 242, 254, 0.35)" />
+                    <stop offset="100%" stop-color="rgba(0, 242, 254, 0)" />
+                  </linearGradient>
+                </defs>
+                <path d="M0,28 Q25,8 50,22 T100,16 T150,26 T200,12 L200,40 L0,40 Z" fill="url(#waveGrad)" />
+                <path class="wave-line-smooth" d="M0,28 Q25,8 50,22 T100,16 T150,26 T200,12" />
+              </svg>
+            </div>
+          </div>
+
+          <ul class="ems-bullet-list">
+            <li><span>🔹</span> <span><strong>Pik Saat Algoritması:</strong> Yüksek tarife zamanlarında uyarı ve yük
+                kaydırma</span></li>
+            <li><span>🔹</span> <span><strong>Tesis Güç Faktörü:</strong> Otomatik kompanzasyon sağlığı takibi</span>
+            </li>
+            <li><span>🔹</span> <span><strong>Şebeke Dalgalanması:</strong> Gerilim dengesizliği erken uyarı
+                sistemi</span></li>
+          </ul>
+        </div>
+
+        <!-- 2. MAKİNE BAZLI SPECIFIC ENERGY CONSUMPTION -->
+        <div class="ems-card ems-machine">
+          <div class="ems-card-glow"></div>
+          <div class="ems-card-top">
+            <div class="ems-icon-wrap icon-gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              </svg>
+            </div>
+            <div class="ems-card-meta">
+              <span class="ems-badge badge-gold">56 NOKTA · SEC ANALİZİ</span>
+              <h3>Makine Spesifik Enerji</h3>
+            </div>
+          </div>
+
+          <div class="ems-hud-box">
+            <div class="ems-hud-main">
+              <div class="ems-hud-num"><span class="counter countup" data-target="4.8">4.8</span><small>kWh<span
+                    class="ems-unit-sub">/Ton</span></small></div>
+              <span class="ems-hud-pill pill-gold">SEC İndeksi</span>
+            </div>
+            <div class="ems-hud-subrow">
+              <span>Hat Yük Dengesi: <strong>%91.2</strong></span>
+              <span class="ems-stat-tag stat-gold">Optimum</span>
+            </div>
+          </div>
+
+          <div class="ems-monitor-box">
+            <div class="emb-head">
+              <span class="emb-subtag">HAT BAZLI ENERJİ YOĞUNLUĞU</span>
+              <span style="color:var(--c-gold);font-weight:700;">kWh/Ton</span>
+            </div>
+            <div class="ems-bar-meters">
+              <div class="ebm-item">
+                <div class="ebm-label-row"><span>C Blok (Pres Hatları)</span><strong>4.2 kWh/t</strong></div>
+                <div class="ebm-track">
+                  <div class="ebm-fill ef-1" style="--ebm-pct: 85%;"></div>
+                </div>
+              </div>
+              <div class="ebm-item">
+                <div class="ebm-label-row"><span>A Blok (Dilme & Boy)</span><strong>2.8 kWh/t</strong></div>
+                <div class="ebm-track">
+                  <div class="ebm-fill ef-2" style="--ebm-pct: 62%;"></div>
+                </div>
+              </div>
+              <div class="ebm-item">
+                <div class="ebm-label-row"><span>D Blok (Profil Hattı)</span><strong>1.4 kWh/t</strong></div>
+                <div class="ebm-track">
+                  <div class="ebm-fill ef-3" style="--ebm-pct: 40%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ul class="ems-bullet-list">
+            <li><span>🔸</span> <span><strong>Idle (Boşta Çalışma) Tespiti:</strong> Üretimsiz harcanan enerjiyi
+                anında
+                belirleme</span></li>
+            <li><span>🔸</span> <span><strong>Ürün Reçete Enerjisi:</strong> Sipariş/tonaj başına gerçek net elektrik
+                maliyeti</span></li>
+            <li><span>🔸</span> <span><strong>Motor Sağlık İndeksi:</strong> Aşırı akım çeken rulman/mil mekanik
+                anomalisi</span></li>
+          </ul>
+        </div>
+
+        <!-- 3. PNÖMATİK SİSTEM & KAÇAK -->
+        <div class="ems-card ems-pneumatic">
+          <div class="ems-card-glow"></div>
+          <div class="ems-card-top">
+            <div class="ems-icon-wrap icon-teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2" />
+              </svg>
+            </div>
+            <div class="ems-card-meta">
+              <span class="ems-badge badge-teal">BLOK DEBİMETRE AĞI</span>
+              <h3>Pnömatik &amp; Hava Kaçak</h3>
+            </div>
+          </div>
+
+          <div class="ems-hud-box">
+            <div class="ems-hud-main">
+              <div class="ems-hud-num"><span class="counter countup" data-target="14.2">14.2</span><small>m³<span
+                    class="ems-unit-sub">/dk</span></small></div>
+              <span class="ems-hud-pill pill-teal">6.8 Bar Sabit</span>
+            </div>
+            <div class="ems-hud-subrow">
+              <span>Basınç Düşüşü: <strong>0.15 Bar</strong></span>
+              <span class="ems-stat-tag stat-teal">Normal</span>
+            </div>
+          </div>
+
+          <div class="ems-monitor-box">
+            <div class="emb-head">
+              <span class="emb-subtag">KOMPRESÖR &amp; KAÇAK DURUMU</span>
+              <span style="color:#2dd4bf;font-weight:700;">A · C · D Blok</span>
+            </div>
+            <div class="ems-pneu-gauge-row">
+              <div class="epg-badge-wrap">
+                <div class="epg-circle">
+                  <span class="epg-val">%94</span>
+                  <span class="epg-lbl">Verim</span>
+                </div>
+              </div>
+              <div class="epg-details">
+                <div class="epgd-row"><span>Özgül Güç:</span><strong>0.11 kW/m³</strong></div>
+                <div class="epgd-row"><span>Gece Kaçağı:</span><strong class="text-green">0.0 m³/dk (Sıfır)</strong>
+                </div>
+                <div class="epgd-row"><span>Debi Dağılım:</span><strong>Dengeli</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <ul class="ems-bullet-list">
+            <li><span>💨</span> <span><strong>Vardiya Dışı Kaçak Alarmı:</strong> Duruş anındaki anormal hava
+                sarfiyatı
+                tespiti</span></li>
+            <li><span>💨</span> <span><strong>Kompresör Yük Yönetimi:</strong> Basınç optimizasyonu ile %15 kompresör
+                tasarrufu</span></li>
+            <li><span>💨</span> <span><strong>Hava Kalite &amp; Çiy Noktası:</strong> Hat filtre ve kurutucu
+                verimlilik
+                izleme</span></li>
+          </ul>
+        </div>
+
+        <!-- 4. GÜNEŞ ENERJİSİ (GES) -->
+        <div class="ems-card ems-solar">
+          <div class="ems-card-glow"></div>
+          <div class="ems-card-top">
+            <div class="ems-icon-wrap icon-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            </div>
+            <div class="ems-card-meta">
+              <span class="ems-badge badge-green">6 İNVERTÖR · GÜNEŞ</span>
+              <h3>GES Üretim &amp; Mahsuplaşma</h3>
+            </div>
+          </div>
+
+          <div class="ems-hud-box">
+            <div class="ems-hud-main">
+              <div class="ems-hud-num"><span class="counter countup" data-target="185.0">185.0</span><small>kW</small>
+              </div>
+              <span class="ems-hud-pill pill-green">Çatı GES Canlı</span>
+            </div>
+            <div class="ems-hud-subrow">
+              <span>Karbon Tasarrufu: <strong>-12.4 Ton CO₂</strong></span>
+              <span class="ems-stat-tag stat-green">Yeşil Sertifika</span>
+            </div>
+          </div>
+
+          <div class="ems-monitor-box">
+            <div class="emb-head">
+              <span class="emb-subtag">MAHSUPLAŞMA &amp; İNVERTÖR</span>
+              <span style="color:var(--c-emerald);font-weight:700;">6 / 6 Aktif</span>
+            </div>
+            <div class="ems-solar-balance-card">
+              <div class="esb-stat">
+                <span class="esb-num" style="color:var(--c-emerald);">6/6</span>
+                <span class="esb-lbl">İnvertör</span>
+              </div>
+              <div class="esb-divider"></div>
+              <div class="esb-stat">
+                <span class="esb-num" style="color:var(--c-cyan);">%100</span>
+                <span class="esb-lbl">Mahsup</span>
+              </div>
+              <div class="esb-divider"></div>
+              <div class="esb-stat">
+                <span class="esb-num" style="color:var(--c-gold);">A++</span>
+                <span class="esb-lbl">Verim</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     S5 — FABRİKA DİJİTAL İKİZİ (HERO LAYOUT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="slide s-dark s-hero-slide" id="s5">
+      <div class="slide-bg-orb orb-tl"></div>
+      <div class="slide-bg-orb orb-br"></div>
+
+      <header class="sh sh-compact">
+        <div class="sh-row">
+          <div>
+            <span class="stag">04 · Dijital İkiz</span>
+            <h2 class="stitle">3D Fabrika Dijital İkizi &amp; Canlı Saha Telemetrisi</h2>
+          </div>
+          <div class="hero-live-badge">
+            <span class="live-beacon"></span>
+            <span>56 PLC ÇEVRİMİÇİ · CANLI VERİ</span>
+          </div>
+        </div>
+        <p class="sdesc">A, C ve D Bloklarındaki tüm pres ve dilme hatlarının tek ekrandan 360° anlık izlenmesi</p>
+      </header>
+
+      <!-- Canlı Fabrika Telemetri HUD Şeridi -->
+      <div class="hero-hud-strip">
+        <div class="hhs-card"><span class="hhs-dot dot-green"></span> <strong>56 / 56 Hat:</strong> %100 Çevrimiçi PLC
+        </div>
+        <div class="hhs-card"><span class="hhs-dot dot-cyan"></span> <strong>BEDAŞ Şebeke:</strong> 312.4 kW Yük</div>
+        <div class="hhs-card"><span class="hhs-dot dot-green"></span> <strong>6 Inverter GES:</strong> 185 kW Güneş
+        </div>
+        <div class="hhs-card"><span class="hhs-dot dot-gold"></span> <strong>WhatsApp Bakım:</strong> Anlık Bildirim
+          Aktif</div>
+        <div class="hhs-card"><span class="hhs-dot dot-green"></span> <strong>Genel OEE:</strong> %84.6 Canlı Performans
+        </div>
+      </div>
+
+      <div class="hero-layout-wrapper">
+        <!-- Hero Screen Frame with Neon Blue Glow -->
+        <div class="hero-frame neon-glow-blue" id="heroLayoutFrame">
+          <div class="hf-chrome">
+            <div class="hf-dots"><span></span><span></span><span></span></div>
+            <div class="hf-title">CodeMaster® MES · Tema Metal Fabrika Dijital İkizi · A / C / D Blokları Canlı Saha
+              Haritası</div>
+            <div class="hf-status">
+              <span class="hfs-dot"></span>
+              <span>56 PLC ÇEVRİMİÇİ · CANLI VERİ AKIŞI</span>
+            </div>
+          </div>
+          <div class="hf-image-container">
+            <img src="images/Tema_Dashboard.png" alt="Fabrika Dijital İkizi ve Layout" class="hero-screen-img" />
+            <div class="hero-scan-overlay"></div>
+          </div>
+        </div>
+
+        <!-- Glassmorphism Live Status Bar -->
+        <div class="hero-pill-bar">
+          <div class="hpill">
+            <span class="hpill-icon">🏢</span>
+            <span><strong>A, C, D Blokları:</strong> 56 Hat Haritalandı</span>
+          </div>
+          <div class="hpill">
+            <span class="hpill-dot dot-green"></span>
+            <span><strong>Çalışıyor</strong> (Yeşil)</span>
+          </div>
+          <div class="hpill">
+            <span class="hpill-dot dot-red"></span>
+            <span><strong>Duruş / Arıza</strong> (Kırmızı)</span>
+          </div>
+          <div class="hpill">
+            <span class="hpill-dot dot-yellow"></span>
+            <span><strong>Setup / Rulo</strong> (Sarı)</span>
+          </div>
+          <div class="hpill hpill-accent">
+            <span class="hpill-icon">💬</span>
+            <span><strong>WhatsApp Arıza Bildirimi</strong></span>
+          </div>
+          <div class="hpill hpill-accent">
+            <span class="hpill-icon">⚡</span>
+            <span><strong>56 Analizör &amp; 6 Inverter GES</strong></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     S6 — YÖNETİM KOKPİTİ (OEE & DASHBOARD)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="slide s-dark s-cockpit-slide" id="s6">
+      <div class="slide-bg-orb orb-tl"></div>
+      <div class="slide-bg-orb orb-br"></div>
+
+      <header class="sh sh-compact">
+        <div class="sh-row">
+          <div>
+            <span class="stag">07 · Yönetim Kokpiti</span>
+            <h2 class="stitle">Karar Destek ve Stratejik Yönetim Kokpiti</h2>
+          </div>
+          <div class="hero-live-badge badge-cyan">
+            <span class="live-beacon beacon-cyan"></span>
+            <span>STRATEJİK YÖNETİM MERKEZİ</span>
+          </div>
+        </div>
+        <p class="sdesc">Gerçek zamanlı OEE, üretim çıktıları ve enerji analizleriyle donatılmış üst yönetim karar
+          destek platformu</p>
+      </header>
+
+      <div class="cockpit-grid-container">
+
+        <!-- Sol: Büyük Dashboard Görseli -->
+        <div class="cockpit-screen-column">
+          <div class="hero-frame neon-glow-cyan" id="heroCockpitFrame">
+            <div class="hf-chrome">
+              <div class="hf-dots"><span></span><span></span><span></span></div>
+              <div class="hf-title">CodeMaster® MES · Cockpit Dashboard · C Blok Pres Hattı — Anlık Performans</div>
+              <div class="hf-status">
+                <span class="hfs-dot"></span>
+                <span>GERÇEK ZAMANLI TELEMETRİ</span>
+              </div>
+            </div>
+            <div class="hf-image-container">
+              <img src="images/Cokcpit_Dashboard.png" alt="Yönetim Kokpiti Dashboard" class="cockpit-screen-img" />
+              <div class="hero-scan-overlay"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sağ: 3 Şık Glassmorphism Bilgi Kartı -->
+        <div class="cockpit-cards-column" id="cockpitCardsCol">
+
+          <!-- Kart 1: Canlı OEE Takibi -->
+          <div class="glass-info-card gic-oee" data-delay="0">
+            <div class="gic-glow"></div>
+            <div class="gic-header">
+              <div class="gic-icon-wrap gic-icon-cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+              </div>
+              <div class="gic-title-group">
+                <span class="gic-tag">KPI · GENEL EKİPMAN VERİMLİLİĞİ</span>
+                <h4 class="gic-title">Canlı OEE &amp; Yapay Zeka Analitiği</h4>
+              </div>
+              <div class="gic-main-stat">%72,4</div>
+            </div>
+            <p class="gic-desc">Kullanılabilirlik, Performans ve Kalite bileşenlerinin anlık otomatik hesaplanması</p>
+            <ul class="gic-list">
+              <li><span class="gchk">✓</span> <strong>Mikroduruşlar</strong> ve planlı/plansız arıza kök neden
+                analitiği
+              </li>
+              <li><span class="gchk">✓</span> <strong>Operatör, kalıp ve vardiya</strong> bazlı verimlilik
+                kıyaslamaları
+              </li>
+              <li><span class="gchk">✓</span> <strong>Yapay zeka destekli</strong> darboğaz ve kapasite kaybı tespiti
+              </li>
+            </ul>
+          </div>
+
+          <!-- Kart 2: Gerçek Zamanlı Üretim Rakamları -->
+          <div class="glass-info-card gic-prod" data-delay="1">
+            <div class="gic-glow"></div>
+            <div class="gic-header">
+              <div class="gic-icon-wrap gic-icon-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </div>
+              <div class="gic-title-group">
+                <span class="gic-tag">ÇIKTI · METRİKLER &amp; TARTIM</span>
+                <h4 class="gic-title">Gerçek Zamanlı Üretim &amp; Tartım</h4>
+              </div>
+              <div class="gic-main-stat">12 CPR</div>
+            </div>
+            <p class="gic-desc">Aktif iş emirlerinin parça ve tonaj bazlı ilerleme durumlarının canlı takibi</p>
+            <ul class="gic-list">
+              <li><span class="gchk">✓</span> <strong>Hassas terazi entegrasyonu</strong> ile koli ve rulo bazlı net
+                tartım</li>
+              <li><span class="gchk">✓</span> <strong>Hedeflenen vs gerçekleşen</strong> üretim sapma ve gecikme
+                alarmları</li>
+              <li><span class="gchk">✓</span> <strong>Sıfır kağıt</strong> vardiya devir raporları (Shift Handover)
+              </li>
+            </ul>
+          </div>
+
+          <!-- Kart 3: Enerji ve Maliyet Analizi -->
+          <div class="glass-info-card gic-energy" data-delay="2">
+            <div class="gic-glow"></div>
+            <div class="gic-header">
+              <div class="gic-icon-wrap gic-icon-gold">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <div class="gic-title-group">
+                <span class="gic-tag">KAYNAK · SÜRDÜRÜLEBİLİRLİK</span>
+                <h4 class="gic-title">Enerji &amp; Finansal Maliyet Analizi</h4>
+              </div>
+              <div class="gic-main-stat">312 kWh</div>
+            </div>
+            <p class="gic-desc">Makine ve ürün başına harcanan elektrik ve hava tüketiminin anlık maliyetlendirilmesi
+            </p>
+            <ul class="gic-list">
+              <li><span class="gchk">✓</span> <strong>BEDAŞ API + GES</strong> mahsuplaşması ile anlık kâr/zarar</li>
+              <li><span class="gchk">✓</span> <strong>Duruşların finansal kaybı:</strong> TL / $ anlık kayıp sayacı
+              </li>
+              <li><span class="gchk">✓</span> <strong>Hava kaçakları</strong> ve gereksiz rölanti israfının erken
+                tespiti</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Alt Yönetim Araçları Barı -->
+      <div class="cockpit-bottom-bar">
+        <div class="cbb-item"><span class="cbb-icon">📈</span> <strong>Vardiya Raporları:</strong> Otomatik PDF ve ERP
+          Veri Aktarımı</div>
+        <div class="cbb-item"><span class="cbb-icon">🔔</span> <strong>Akıllı Alarmlar:</strong> Eşik Değer ve
+          Darboğaz
+          Erken Uyarısı</div>
+        <div class="cbb-item"><span class="cbb-icon">📱</span> <strong>Yönetici Mobil Paneli:</strong> WhatsApp ve
+          Telefondan 7/24 Canlı Özet</div>
+        <div class="cbb-item"><span class="cbb-icon">🎯</span> <strong>Kapasite Planlama:</strong> Gerçek Saha
+          Verisiyle
+          Gelecek Öngörüsü</div>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     S7 — TEŞEKKÜR / ROI & GELECEK VİZYONU
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="slide s-cover s-closing" id="s7">
+      <canvas class="cover-canvas" id="closingCanvas"></canvas>
+      <div class="cover-grid-lines"></div>
+      <div class="flow-scan-beam"></div>
+
+      <div class="closing-inner">
+        <!-- Logolar (Büyük & Glassmorphism Çerçeveli) -->
+        <div class="cl-logos">
+          <div class="cl-logo-card">
+            <img src="images/mcs_logo.png" alt="MCS Group" class="cl-logo cl-mcs" />
+          </div>
+          <div class="cl-logo-sep">
+            <span class="cl-sep-line"></span>
+            <span class="cl-sep-badge">
+              <span class="f-pulse-dot dot-cyan"></span>
+              <span>STRATEJİK ORTAKLIK</span>
+            </span>
+            <span class="cl-sep-line"></span>
+          </div>
+          <div class="cl-logo-card">
+            <img src="images/tema_logo.png" alt="Tema Metal" class="cl-logo cl-tema" />
+          </div>
+        </div>
+
+        <div class="cl-header-text">
+          <h2 class="cl-title">TEŞEKKÜRLER</h2>
+          <p class="cl-sub">Tema Metal'in dijital dönüşüm yolculuğuna teknoloji ortağı olmaktan gurur duyuyoruz.</p>
+        </div>
+
+        <!-- Executive ROI Highlight Grid (Hareketli Sayaçlar) -->
+        <div class="closing-roi-grid">
+          <div class="croi-card" data-delay="0">
+            <div class="croi-glow"></div>
+            <span class="croi-num">+%<span class="countup" data-target="15">15</span></span>
+            <span class="croi-lbl">OEE &amp; Kapasite Artışı</span>
+            <span class="croi-sub">Darboğaz ve mikroduruşların çözümüyle</span>
+          </div>
+          <div class="croi-card" data-delay="1">
+            <div class="croi-glow"></div>
+            <span class="croi-num">-%<span class="countup" data-target="40">40</span></span>
+            <span class="croi-lbl">Duruş &amp; Müdahale Süresi</span>
+            <span class="croi-sub">WhatsApp ile</span>
+          </div>
+          <div class="croi-card" data-delay="2">
+            <div class="croi-glow"></div>
+            <span class="croi-num">%<span class="countup" data-target="100">100</span></span>
+            <span class="croi-lbl">Uçtan Uca Entegrasyon</span>
+            <span class="croi-sub">Saha, ERP ve kalite arasında kesintisiz veri akışı</span>
+          </div>
+          <div class="croi-card" data-delay="3">
+            <div class="croi-glow"></div>
+            <span class="croi-num">-%<span class="countup" data-target="10">10</span></span>
+            <span class="croi-lbl">Enerji Tasarrufu</span>
+            <span class="croi-sub">ISO 50001</span>
+          </div>
+        </div>
+
+        <!-- Büyük & Vurgulu Motto -->
+        <div class="cl-quote">
+          <span class="cl-quote-icon">“</span>
+          <p class="cl-quote-text">
+            <span>Hammaddeden nihai ürüne — her adım dijital,</span>
+            <span class="cq-accent">her veri doğrulanmış, her enerji ölçülebilir.</span>
+          </p>
+          <span class="cl-quote-icon cl-quote-end">”</span>
+        </div>
+
+
+
+        <!-- Ortalı Powered by CodeMaster Alanı -->
+        <div class="cl-powered-center">
+          <div class="cl-powered-eyebrow">
+            <span class="cpe-line"></span>
+            <div class="cpe-text">
+              <span class="f-pulse-dot dot-cyan"></span>
+              <span>POWERED BY</span>
+              <span class="f-pulse-dot dot-cyan"></span>
+            </div>
+            <span class="cpe-line"></span>
+          </div>
+          <div class="cl-powered-card">
+            <img src="images/codemaster_logo.png" alt="CodeMaster Digital Transformation Platform"
+              class="powered-img" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Başa Dön Butonu (Slayt Genelinde Sağ Altta Sabit) -->
+      <button class="cl-restart" id="restartBtn" title="Sunumu Başa Sar">↺ Başa Dön</button>
+    </section>
+
+  </div><!-- /deck -->
+
+  <script src="script.js"></script>
+</body>
+
+</html>

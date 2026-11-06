@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema Metal — LinkedIn Video Stage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&family=Orbitron:wght@600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070b14;
+      --card: rgba(13, 22, 41, 0.86);
+      --border: rgba(255, 255, 255, 0.11);
+      --border2: rgba(56, 189, 248, 0.42);
+      --sky: #38bdf8;
+      --cyan: #00f2fe;
+      --blue: #0284c7;
+      --amber: #fbbf24;
+      --green: #10b981;
+      --emerald: #34d399;
+      --red: #ef4444;
+      --text: #ffffff;
+      --text2: #e2e8f0;
+      --text3: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1080px; height: 1350px; overflow: hidden;
+      background: var(--bg); color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .scene {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      padding: 54px 60px 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 85% 105%, rgba(14, 165, 233, 0.16) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 45% at 0% -5%, rgba(16, 185, 129, 0.12) 0%, transparent 55%),
+        linear-gradient(165deg, #0a1426 0%, #060b17 100%);
+      opacity: 0; pointer-events: none;
+    }
+    .scene.active { opacity: 1; }
+
+    /* Top bar */
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 28px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 18px;
+      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 22px;
+      letter-spacing: .16em; color: var(--text3); text-transform: uppercase;
+    }
+    .brand img { height: 46px; filter: brightness(0) invert(1) opacity(.95); }
+    .brand .sep { width: 2px; height: 28px; background: var(--border2); }
+    .live-pill {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 22px; border-radius: 40px;
+      background: rgba(16, 185, 129, 0.14);
+      border: 1.5px solid rgba(16, 185, 129, 0.5);
+      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 21px;
+      letter-spacing: .12em; color: var(--emerald); text-transform: uppercase;
+    }
+    .dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--emerald); box-shadow: 0 0 14px var(--emerald);
+    }
+
+    .tag {
+      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 23px;
+      letter-spacing: .2em; text-transform: uppercase; color: var(--cyan);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 58px; font-weight: 900; line-height: 1.06;
+      letter-spacing: -0.025em; margin-bottom: 22px;
+    }
+    .grad {
+      background: linear-gradient(95deg, var(--cyan) 0%, var(--sky) 45%, var(--emerald) 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* Frame */
+    .frame {
+      position: relative;
+      border-radius: 24px; overflow: hidden;
+      border: 2px solid var(--border2);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.65), 0 0 50px rgba(56, 189, 248, 0.2);
+      background: #050912;
+    }
+    .frame .bar {
+      height: 36px; display: flex; align-items: center; gap: 9px;
+      padding: 0 18px; background: rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid var(--border);
+    }
+    .frame .bar i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+    .frame .bar i:nth-child(1) { background: #ef4444; }
+    .frame .bar i:nth-child(2) { background: #f59e0b; }
+    .frame .bar i:nth-child(3) { background: #10b981; }
+    .frame .bar b { margin-left: 12px; font-size: 15px; font-weight: 600; color: var(--text3); }
+
+    /* Step pills */
+    .step-pills {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;
+      margin: 22px 0 18px;
+    }
+    .sp {
+      padding: 14px 10px; border-radius: 14px;
+      background: var(--card); border: 1.5px solid var(--border);
+      text-align: center; font-size: 18px; font-weight: 700; color: var(--text3);
+    }
+    .sp b {
+      display: block; font-family: 'Orbitron', sans-serif; font-size: 16px;
+      color: var(--text3); margin-bottom: 4px;
+    }
+    .sp.done { border-color: rgba(16, 185, 129, 0.45); color: var(--text2); }
+    .sp.done b { color: var(--emerald); }
+    .sp.active {
+      background: rgba(2, 132, 199, 0.24);
+      border-color: var(--cyan); color: #fff;
+      box-shadow: 0 0 24px rgba(0, 242, 254, 0.3);
+    }
+    .sp.active b { color: var(--cyan); }
+
+    /* Subtitle card (for muted autoplay) */
+    .subcard {
+      padding: 26px 30px; border-radius: 22px;
+      background: var(--card);
+      border: 1.5px solid var(--border2);
+      border-left: 6px solid var(--cyan);
+    }
+    .subcard .st {
+      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 22px;
+      letter-spacing: .14em; color: var(--cyan); text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .subcard .sd {
+      font-size: 26px; line-height: 1.38; color: var(--text); font-weight: 600;
+    }
+
+    /* Twin scene */
+    .twin-wrap { position: relative; }
+    .twin-wrap img { width: 100%; display: block; }
+    .pulse-ring {
+      position: absolute; width: 46px; height: 46px; border-radius: 50%;
+      border: 3px solid var(--red);
+      box-shadow: 0 0 24px var(--red), inset 0 0 14px var(--red);
+      transform: translate(-50%, -50%);
+    }
+    .wa-toast {
+      margin-top: 22px;
+      padding: 24px 28px; border-radius: 22px;
+      background: linear-gradient(120deg, rgba(22, 101, 52, 0.55), rgba(13, 22, 41, 0.92));
+      border: 2px solid #22c55e;
+      box-shadow: 0 20px 50px rgba(0,0,0,.6), 0 0 35px rgba(34, 197, 94, 0.28);
+    }
+    .wa-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .wa-head b { font-size: 25px; color: #4ade80; font-weight: 800; }
+    .wa-head span {
+      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 20px;
+      padding: 4px 14px; border-radius: 20px; background: rgba(239,68,68,.22);
+      border: 1px solid #ef4444; color: #fca5a5;
+    }
+    .wa-body { font-size: 24px; line-height: 1.4; color: var(--text2); font-weight: 500; }
+    .wa-body strong { color: #fff; font-weight: 800; }
+
+    .footer {
+      margin-top: auto; height: 88px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--border);
+      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 21px;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--text3);
+    }
+    .vbar {
+      position: absolute; left: 0; bottom: 0; height: 8px;
+      background: linear-gradient(90deg, var(--cyan), var(--emerald));
+      box-shadow: 0 0 20px rgba(0, 242, 254, .7);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SAHNE A: CANLI İZOMETRİK AKIŞ -->
+  <section class="scene active" id="scFlow">
+    <div class="topbar">
+      <div class="brand">
+        <img src="../images/mcs_logo.png" alt="MCS" />
+        <span class="sep"></span>
+        <span>Tema Metal · Dijital Dönüşüm</span>
+      </div>
+      <div class="live-pill"><span class="dot" id="liveDot"></span>CANLI SİMÜLASYON</div>
+    </div>
+
+    <div class="tag">01 · UÇTAN UCA İZOMETRİK ÜRETİM AKIŞI</div>
+    <h2>Bobinden sevkiyat tırına <span class="grad">sıfır kör nokta.</span></h2>
+
+    <div class="frame">
+      <div class="bar"><i></i><i></i><i></i><b>CodeMaster MES · Canlı Üretim &amp; İzlenebilirlik Hattı</b></div>
+      <!-- 1360x660 iframe -> 0.70588 ölçek = 960x466 -->
+      <div style="width:956px; height:520px; overflow:hidden; position:relative; background:#060c18">
+        <iframe id="isoFrame" src="../izometrik_akis.html?embed=1&amp;video=1&amp;freeze=0"
+          style="width:1355px; height:737px; border:0; transform:scale(0.7055); transform-origin:0 0"></iframe>
+      </div>
+    </div>
+
+    <div class="step-pills" id="stepPills">
+      <div class="sp active"><b>ADIM 01</b>ERP &amp; Rulo</div>
+      <div class="sp"><b>ADIM 02</b>A Blok Dilme</div>
+      <div class="sp"><b>ADIM 03</b>4 Kollu Üretim</div>
+      <div class="sp"><b>ADIM 04</b>Paletleme</div>
+      <div class="sp"><b>ADIM 05</b>Sevkiyat</div>
+    </div>
+
+    <div class="subcard">
+      <div class="st" id="subTitle">ADIM 1 / 5 · ERP PLANLAMA &amp; GİRİŞ KALİTE</div>
+      <div class="sd" id="subDesc">24,8 tonluk ana rulo barkodlanır, IQC onayı alır ve WO-DIL-1048 iş emriyle A Blok Dilme hattına sevk edilir.</div>
+    </div>
+
+    <div class="footer">
+      <span>Tema Metal × MCS · CodeMaster MES</span>
+      <span style="color:var(--cyan)">56 PLC · 25 Terazi · %100 İzlenebilirlik</span>
+    </div>
+    <div class="vbar" id="vbarFlow" style="width:0%"></div>
+  </section>
+
+  <!-- SAHNE B: 3D DİJİTAL İKİZ & WHATSAPP -->
+  <section class="scene" id="scTwin">
+    <div class="topbar">
+      <div class="brand">
+        <img src="../images/mcs_logo.png" alt="MCS" />
+        <span class="sep"></span>
+        <span>3D Fabrika Dijital İkizi</span>
+      </div>
+      <div class="live-pill"><span class="dot" id="liveDot2"></span>56 / 56 PLC ÇEVRİMİÇİ</div>
+    </div>
+
+    <div class="tag">02 · CANLI SAHA TELEMETRİSİ &amp; ANLIK BAKIM</div>
+    <h2>56 makine canlı, <span class="grad">arıza saniyesinde cepte.</span></h2>
+
+    <div class="frame twin-wrap">
+      <div class="bar"><i></i><i></i><i></i><b>CodeMaster MES · A / C / D Blokları Canlı Saha Haritası</b></div>
+      <div style="position:relative; overflow:hidden">
+        <img id="twinImg" src="../images/Tema_Dashboard.png" alt="Dijital İkiz" />
+        <div class="pulse-ring" id="ring1" style="left:14.2%; top:58%"></div>
+        <div class="pulse-ring" id="ring2" style="left:57.4%; top:76%"></div>
+      </div>
+    </div>
+
+    <div class="wa-toast" id="waToast">
+      <div class="wa-head">
+        <b>💬 WhatsApp Bakım Grubu · Otomatik Bildirim</b>
+        <span>⚡ 0,4 sn'de iletildi</span>
+      </div>
+      <div class="wa-body">
+        🚨 <strong>DURUŞ BİLDİRİMİ:</strong> C Blok · <strong>CDL-01 Hattı</strong> · Operatör: M. Yılmaz · Neden: <strong>Kalıp / Kesici Ayar</strong> · Saat: 14:02 — <em>Müdahale süresi -%40 kısaldı.</em>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Tema Metal × MCS · CodeMaster MES</span>
+      <span style="color:var(--emerald)">+%15 OEE · -%40 Duruş · -%10 Enerji</span>
+    </div>
+    <div class="vbar" id="vbarTwin" style="width:70%"></div>
+  </section>
+
+<script>
+  const CAPTIONS = [
+    { a: 0,    b: 4.5,  t: 'ADIM 1 / 5 · ERP PLANLAMA & GİRİŞ KALİTE',
+      d: '24,8 tonluk ana rulo barkodlanır, IQC onayı alır ve WO-DIL-1048 iş emriyle A Blok Dilme hattına sevk edilir.' },
+    { a: 4.5,  b: 9.2,  t: 'ADIM 2 / 5 · A BLOK DİLME & 2 SETUP KONTROLÜ',
+      d: 'Reçete ve stok onayı geçince ana rulo 4 alt partiye dilinir; her dilime bağımsız yarı mamul barkodu basılır.' },
+    { a: 9.2,  b: 15.4, t: 'ADIM 3 / 5 · 4 KOLLU PARALEL ÜRETİM & TARTIM',
+      d: 'C Blok Pres · D Blok Boy Kesim · C Blok Toroid Sarım · A Blok Unicore hatlarında eşzamanlı üretim ve terazi doğrulaması.' },
+    { a: 15.4, b: 19.5, t: 'ADIM 4 / 5 · PALETLEME & LAZER DOĞRULAMA',
+      d: '4 hattın çıktıları tek palette birleşir, lazerle kontrol edilir ve ortak nihai parti numarası (TEMA-PRT-2026-88) alır.' },
+    { a: 19.5, b: 28.0, t: 'ADIM 5 / 5 · ÇIKIŞ KALİTE & SEVKİYAT',
+      d: 'Palet tıra yüklenir, ERP üzerinden otomatik irsaliye (IRS-2026-9042) kesilir ve sevkiyat tırı yola çıkar.' },
+  ];
+
+  const scFlow = document.getElementById('scFlow');
+  const scTwin = document.getElementById('scTwin');
+  const isoFrame = document.getElementById('isoFrame');
+  const pills = Array.from(document.querySelectorAll('#stepPills .sp'));
+  const subTitle = document.getElementById('subTitle');
+  const subDesc = document.getElementById('subDesc');
+  const vbarFlow = document.getElementById('vbarFlow');
+  const vbarTwin = document.getElementById('vbarTwin');
+  const twinImg = document.getElementById('twinImg');
+  const ring1 = document.getElementById('ring1');
+  const ring2 = document.getElementById('ring2');
+  const waToast = document.getElementById('waToast');
+
+  window.renderStage = function(mode, sec, progressRatio) {
+    const pulse = 0.55 + 0.45 * Math.sin(sec * 8);
+    document.getElementById('liveDot').style.opacity = pulse;
+    document.getElementById('liveDot2').style.opacity = pulse;
+
+    if (mode === 'flow') {
+      scFlow.classList.add('active');
+      scTwin.classList.remove('active');
+      if (isoFrame.contentWindow && isoFrame.contentWindow.setVideoTime) {
+        isoFrame.contentWindow.setVideoTime(sec, 0.08);
+      }
+      let idx = CAPTIONS.findIndex(c => sec >= c.a && sec < c.b);
+      if (idx < 0) idx = CAPTIONS.length - 1;
+      pills.forEach((p, i) => {
+        p.classList.toggle('active', i === idx);
+        p.classList.toggle('done', i < idx);
+      });
+      subTitle.textContent = CAPTIONS[idx].t;
+      subDesc.textContent = CAPTIONS[idx].d;
+      vbarFlow.style.width = (progressRatio * 100).toFixed(1) + '%';
+    } else if (mode === 'twin') {
+      scFlow.classList.remove('active');
+      scTwin.classList.add('active');
+      // Hafif sinematik zoom + yanıp sönen arıza halkaları + WhatsApp kartı girişi
+      const z = 1 + Math.min(1, sec / 6) * 0.045;
+      twinImg.style.transform = `scale(${z.toFixed(4)})`;
+      const rScale = 0.85 + 0.35 * Math.abs(Math.sin(sec * 5));
+      const rOp = 0.4 + 0.6 * Math.abs(Math.sin(sec * 5));
+      ring1.style.transform = `translate(-50%,-50%) scale(${rScale.toFixed(2)})`;
+      ring2.style.transform = `translate(-50%,-50%) scale(${rScale.toFixed(2)})`;
+      ring1.style.opacity = rOp.toFixed(2);
+      ring2.style.opacity = rOp.toFixed(2);
+
+      const pToast = Math.min(1, Math.max(0, (sec - 0.6) / 0.55));
+      const ease = 1 - Math.pow(1 - pToast, 3);
+      waToast.style.opacity = ease.toFixed(3);
+      waToast.style.transform = `translateY(${((1 - ease) * 28).toFixed(1)}px)`;
+      vbarTwin.style.width = (progressRatio * 100).toFixed(1) + '%';
+    }
+  };
+</script>
+</body>
+</html>
+
